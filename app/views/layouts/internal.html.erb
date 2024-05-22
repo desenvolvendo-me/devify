@@ -8,7 +8,12 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
 
-  <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+  <%= javascript_importmap_tags %>
+
+  <%= javascript_include_tag "chartkick" %>
+  <%= javascript_include_tag "Chart.bundle" %>
+
+  <%#= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
 
   <%= stylesheet_link_tag "application", "https://unpkg.com/trix@2.0.0/dist/trix.css", "data-turbo-track": "reload" %>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.turbo.min.js"></script>
@@ -21,7 +26,7 @@
 </head>
 
 <body class="font-normal leading-normal text-slate-800 relative selection:bg-primary-500/40 bg-white dark:bg-slate-900 dark:text-slate-100 antialiased">
-<%= turbo_include_tags %>
+<%#= turbo_include_tags %>
 <%= render "shared/flash" %>
 <% if content_for(:header).present? %>
   <%= yield :header %>
