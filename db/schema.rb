@@ -166,6 +166,12 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_29_131222) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "study_areas", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "tasks", force: :cascade do |t|
     t.string "name"
     t.string "description"
