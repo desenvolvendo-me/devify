@@ -21,8 +21,23 @@
   </div>
 </div>
 <div class="container">
-  <div class="text-center mt-4 mb-4">
+  <div class="flex justify-between mt-4 mb-4">
     <h2 class="text-3xl">Progresso do aluno</h2>
+    <%= form_tag(manager_home_path, method: :get) do %>
+      <div class="flex">
+        <div class="mr-7">
+          <label for="select-example" class="form-label">Selecione linguagem</label>
+          <%= select_tag :language, options_for_select(@languages.map { |l| [l.name, l.name] }, params[:language]), class: "form-select", include_blank: true %>
+        </div>
+        <div class="mr-7">
+          <label for="select-example" class="form-label">Selecione área</label>
+          <%= select_tag :area, options_for_select(@areas.map { |a| [a.name, a.name] }, params[:area]), class: "form-select", include_blank: true %>
+        </div>
+        <div class="flex items-end">
+          <%= submit_tag "Filtrar", class:"btn btn-primary block" %>
+        </div>
+      </div>
+    <% end %>
   </div>
   <%= line_chart @student_progress_data, xtitle: "Semana", ytitle: "Progresso" %>
 </div>
