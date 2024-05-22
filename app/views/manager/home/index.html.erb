@@ -20,3 +20,9 @@
     </button>
   </div>
 </div>
+<div class="container">
+  <div class="text-center mt-4 mb-4">
+    <h2 class="text-3xl">Progresso do aluno</h2>
+  </div>
+  <%= line_chart @student_progress_data, xtitle: "Semana", ytitle: "Progresso" %>
+</div>
