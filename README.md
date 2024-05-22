@@ -128,14 +128,14 @@ npm install
 rails railsui:install
 ```
 
-#### Migrar Banco de Dados
-```
-rails db:drop && rails db:create && rails db:migrate && rails db:seed RAILS_ENV=development
-```
-
 #### Redis
 ```
 redis-server
+```
+
+#### Migrar Banco de Dados
+```
+rails db:drop && rails db:create && rails db:migrate && rails db:seed RAILS_ENV=development
 ```
 
 #### Executando o Servidor
