@@ -107,6 +107,18 @@ if Rails.env.development?
     values
   end
 
+  languages = ["Ruby", "Java", "Python", "JavaScript", "C++", "C#"]
+
+  languages.each do |language|
+    ProgrammingLanguage.create(name: language)
+  end
+
+  areas = ["Backend", "Frontend", "Data Science", "Mobile Development", "DevOps"]
+
+  areas.each do |area|
+    StudyArea.create(name: area)
+  end
+
   # Define the increments and drops for each phase
   increments = 3
   phases = ['f0', 'f1', 'f2', 'f3', 'f4']
@@ -131,8 +143,8 @@ if Rails.env.development?
       progress_data << {
         date: date,
         description: phase,
-        programming_language: 'Ruby on Rails',
-        study_area: 'Backend',
+        programming_language: languages.sample,
+        study_area: areas.sample,
         value: value
       }
     end
