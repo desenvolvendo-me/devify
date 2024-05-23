@@ -8,4 +8,7 @@
 #  updated_at :datetime         not null
 #
 class ProgrammingLanguage < ApplicationRecord
+  has_many :student_progresses
+
+  validates :name, presence: true
 end
