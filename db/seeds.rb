@@ -114,18 +114,15 @@ if Rails.env.development?
   end
 
   languages = ["Ruby", "Java", "Python", "JavaScript", "C++", "C#"]
-
-  languages.each do |language|
+  language_records = languages.map do |language|
     ProgrammingLanguage.create(name: language)
   end
 
   areas = ["Backend", "Frontend", "Data Science", "Mobile Development", "DevOps"]
-
-  areas.each do |area|
+  area_records = areas.map do |area|
     StudyArea.create(name: area)
   end
 
-  # Define the increments and drops for each phase
   increments = 3
   phases = ['f0', 'f1', 'f2', 'f3', 'f4']
   drops = {
@@ -136,7 +133,7 @@ if Rails.env.development?
     'f4' => [5, 7]
   }
 
-  # Generate the records
+  # Gera os registros de progresso
   progress_data = []
 
   phases.each_with_index do |phase, index|
@@ -149,8 +146,8 @@ if Rails.env.development?
       progress_data << {
         date: date,
         description: phase,
-        programming_language: languages.sample,
-        study_area: areas.sample,
+        programming_language_id: language_records.sample.id,
+        study_area_id: area_records.sample.id,
         value: value
       }
     end
