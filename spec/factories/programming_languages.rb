@@ -9,6 +9,6 @@
 #
 FactoryBot.define do
   factory :programming_language do
-    name { "MyString" }
+    name { FFaker::ProgrammingLanguage.name }
   end
 end
