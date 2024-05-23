@@ -9,6 +9,6 @@
 #
 FactoryBot.define do
   factory :study_area do
-    name { "MyString" }
+    name { FFaker::Name.name }
   end
 end
