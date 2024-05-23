@@ -159,11 +159,13 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_29_131222) do
   create_table "student_progresses", force: :cascade do |t|
     t.date "date"
     t.string "description"
-    t.string "programming_language"
-    t.string "study_area"
     t.integer "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "programming_language_id"
+    t.bigint "study_area_id"
+    t.index ["programming_language_id"], name: "index_student_progresses_on_programming_language_id"
+    t.index ["study_area_id"], name: "index_student_progresses_on_study_area_id"
   end
 
   create_table "study_areas", force: :cascade do |t|
