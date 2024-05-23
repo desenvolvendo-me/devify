@@ -1,0 +1,57 @@
+<% content_for :body_classes, "text-slate-800 dark:bg-slate-900 dark:text-slate-100 bg-white" %>
+
+<div class="bg-white border-b dark:bg-slate-800/50 dark:border-b dark:border-slate-700 px-4">
+  <div class="container mx-auto sm:flex flex-wrap justify-between items-center">
+
+    <%= render "shared/settings/nav", { header_title: "Ballast Information" } %>
+
+  </div>
+</div>
+
+<div class="container mx-auto pb-24 px-4 my-16">
+  <div class="max-w-4xl mx-auto">
+    <h1 class="mb-2 text-3xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight">Student Profile</h1>
+    <h3 class="font-semibold text-xl tracking-tight text-slate-800 dark:text-slate-300 mb-2">Ballast</h3>
+
+    <%= form_tag(manager_students_profile_path, method: :patch) do %>
+      <div class="grid grid-cols-1 sm:grid-cols-2 sm:gap-x-16 sm:gap-y-10 gap-6 items-center">
+        <div>
+          <%= label_tag :name, "Name", class: "form-label" %>
+          <%= text_field_tag "user[name]", nil, placeholder: current_user.name, class: "form-input" %>
+        </div>
+      </div>
+
+      <hr class="my-10 dark:border-slate-600">
+
+      <h3 class="font-semibold text-xl tracking-tight text-slate-800 dark:text-slate-300 mb-2">Personal information</h3>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 sm:gap-x-16 sm:gap-y-10 gap-6 items-center">
+        <div>
+          <%= label_tag :language, "Language", class: "form-label" %>
+          <%= text_field_tag "student_profile[language]", nil, placeholder: current_user.student_profile.language, class: "form-input" %>
+        </div>
+        <div>
+          <%= label_tag :track, "Track", class: "form-label" %>
+          <%= text_field_tag "student_profile[track]", nil, placeholder: current_user.student_profile.track, class: "form-input" %>
+        </div>
+        <div>
+          <%= label_tag :github, "GitHub", class: "form-label" %>
+          <%= text_field_tag "student_profile[github]", nil, placeholder: current_user.student_profile.github.present? ? current_user.student_profile.github : "https://github.com/username", class: "form-input" %>
+        </div>
+        <div>
+          <%= label_tag :wakatime, "WakaTime", class: "form-label" %>
+          <%= text_field_tag "student_profile[wakatime]", nil, placeholder: current_user.student_profile.wakatime.present? ? current_user.student_profile.wakatime : "https://wakatime.com/username", class: "form-input" %>
+        </div>
+        <div>
+          <%= label_tag :linkedin, "LinkedIn", class: "form-label" %>
+          <%= text_field_tag "student_profile[linkedin]", nil, placeholder: current_user.student_profile.linkedin.present? ? current_user.student_profile.linkedin : "https://linkedin.com/in/username", class: "form-input" %>
+        </div>
+      </div>
+
+      <div class="border-t py-6 mt-10 flex items-center space-x-4 dark:border-slate-600">
+        <%= submit_tag "Update", class: "btn btn-primary" %>
+        <%= link_to "Cancel", "#", class: "font-medium text-slate-600 hover:text-primary-600 text-sm px-2 py-2 dark:text-slate-400 dark:hover:text-primary-400" %>
+      </div>
+    <% end %>
+  </div>
+</div>
