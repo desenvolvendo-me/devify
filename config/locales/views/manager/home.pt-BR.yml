@@ -1,0 +1,10 @@
+pt-BR:
+  manager:
+    home:
+      index:
+        title: 'Progresso do aluno'
+        filter_by: 'Filtrar'
+        filter_1: 'Selecione uma linguagem'
+        filter_2: 'Selecione uma área'
+        xtitle: 'Semana'
+        ytitle: 'Progresso'
