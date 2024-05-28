@@ -8,15 +8,21 @@ class ProjectSimulationsController < ApplicationController
     @project_simulation = ProjectSimulation.find(params[:id])
   end
 
-    def create
-      @project_simulation = ProjectSimulation.find(params[:project_id])
-      current_user.project_simulations << @project_simulation
+  def create
+    @project_simulation = ProjectSimulation.find(params[:project_id])
+    current_user.project_simulations << @project_simulation
 
-      respond_to do |format|
-        format.html { redirect_to project_simulations_path, notice: 'Projeto iniciado com sucesso.' }
-        format.json { render :show, status: :created, location: @project_simulation }
-      end
+    respond_to do |format|
+      format.html { redirect_to project_simulations_path, notice: 'Projeto iniciado com sucesso.' }
+      format.json { render :show, status: :created, location: @project_simulation }
     end
+  rescue ActiveRecord::RecordNotUnique => e
+    if e.message.include?("index_user_project_simulation_on_user_and_project")
+      redirect_to project_simulations_path, alert: 'Você já iniciou este projeto.'
+    else
+      redirect_to project_simulations_path, alert: 'Erro ao iniciar o projeto.'
+    end
+  end
 
     private
 
