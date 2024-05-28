@@ -1,0 +1,11 @@
+<h1>Projetos Simulados Disponíveis</h1>
+<ul>
+  <% @project_simulations.each do |project| %>
+    <li>
+      <h2><%= link_to project.title, project_simulation_path(project) %></h2>
+      <p><%= project.description %></p>
+      <%= link_to 'Ver Detalhes', project_simulation_path(project), class: 'btn btn-info' %>
+      <%= link_to 'Iniciar Projeto', new_project_simulation_path(project), class: 'btn btn-primary' %>
+    </li>
+  <% end %>
+</ul>
