@@ -3,12 +3,15 @@ if Rails.env.development?
 
   user_1 = User.create!(name: 'User 1', email: 'user1@mail.com', password: '000000', password_confirmation: '000000', confirmed_at: Time.now)
   user_2 = User.create!(name: 'User 2', email: 'user2@mail.com', password: '000000', password_confirmation: '000000', confirmed_at: Time.now)
+  user_3 = User.create!(name: 'User 3', email: 'user3@mail.com', password: '000000', password_confirmation: '000000', confirmed_at: Time.now)
 
   client_1 = Client.create!(document: '81939120047', user: user_1)
   client_2 = Client.create!(document: '66778473061', user: user_2)
+  client_3 = Client.create!(document: '66778473061', user: user_3)
 
-  student_profile_1 = StudentProfile.create!(user: user_1, language: 'Ruby', track: 'Backend', wakatime: '', github: '', linkedin: '')
-  student_profile_2 = StudentProfile.create!(user: user_2, language: 'Python', track: 'Frontend', wakatime: '', github: '', linkedin: '')
+  student_profile_1 = StudentProfile.create!(user: user_1, language: '', track: '', wakatime: '', github: '', linkedin: '')
+  student_profile_2 = StudentProfile.create!(user: user_2, language: '', track: '', wakatime: '', github: '', linkedin: '')
+  student_profile_3 = StudentProfile.create!(user: user_3, language: '', track: '', wakatime: '', github: '', linkedin: '')
 
   # Atribuição de avatar ao usuário 1
   user_1.avatar.attach(io: File.open(Rails.root.join('spec', 'support', 'images', 'avatar-1.jpg')), filename: 'avatar-1.jpg', content_type: 'image/jpg')

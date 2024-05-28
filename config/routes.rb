@@ -66,7 +66,12 @@ Rails.application.routes.draw do
     get '', to: 'home#index', as: :home
 
     namespace :students do
-      resource :profile, only: [:edit, :update], controller: 'profiles'
+      resource :profile, only: [:show, :edit, :update], controller: 'profiles' do
+        member do
+          get 'evaluate'
+          post 'submit_evaluation'
+        end
+      end
     end
   end
 
@@ -84,5 +89,4 @@ Rails.application.routes.draw do
       patch :update_stripe_info
     end
   end
-
 end
