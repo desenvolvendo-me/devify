@@ -8,10 +8,6 @@ class ProjectSimulationsController < ApplicationController
     @project_simulation = ProjectSimulation.find(params[:id])
   end
 
-  def new
-    @project_simulation = ProjectSimulation.new
-  end
-
     def create
       @project_simulation = ProjectSimulation.find(params[:project_id])
       current_user.project_simulations << @project_simulation

@@ -1,6 +1,6 @@
 require 'sidekiq/web'
 Rails.application.routes.draw do
-  resources :project_simulations, only: [:index, :show, :new, :create]
+  resources :project_simulations, only: [:index, :show, :create]
   resources :posts
 	get 'admin/integrations', to: 'page#integrations'
 	get 'admin/team', to: 'page#team'
