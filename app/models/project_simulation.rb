@@ -12,4 +12,5 @@
 #  updated_at       :datetime         not null
 #
 class ProjectSimulation < ApplicationRecord
+  has_and_belongs_to_many :users
 end
