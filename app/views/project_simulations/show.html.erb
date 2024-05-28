@@ -1,4 +1,3 @@
-<!-- app/views/project_simulations/show.html.erb -->
 <h1><%= @project_simulation.title %></h1>
 
 <p><strong>Descrição:</strong> <%= @project_simulation.description %></p>
@@ -12,4 +11,7 @@
 <h2>Resultados Esperados</h2>
 <p><%= @project_simulation.expected_results %></p>
 
-<%= link_to 'Iniciar Projeto', new_project_simulation_path(@project_simulation), class: 'btn btn-primary' %>
+<%= form_with url: project_simulations_path, method: :post, local: true do |form| %>
+  <%= form.hidden_field :project_id, value: @project_simulation.id %>
+  <%= form.submit 'Iniciar Projeto', class: 'btn btn-primary' %>
+<% end %>
