@@ -4,7 +4,7 @@
 #
 #  id                      :bigint           not null, primary key
 #  date                    :date
-#  description             :string
+#  mark                    :string
 #  value                   :integer
 #  created_at              :datetime         not null
 #  updated_at              :datetime         not null
@@ -26,7 +26,7 @@ class StudentProgress < ApplicationRecord
   belongs_to :study_area
 
   validates :date, presence: true
-  validates :description, presence: true
+  validates :mark, presence: true
   validates :value, presence: true
   validates :programming_language, presence: true
   validates :study_area, presence: true
