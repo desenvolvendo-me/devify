@@ -5,13 +5,14 @@ module Manager
     def index
       @languages = ProgrammingLanguage.all
       @areas = StudyArea.all
+      @marks = StudentProgress.select(:mark).distinct.order(:mark).pluck(:mark)
     end
 
     private
 
     def set_student_progress_data
       @student_progress_data = Home::PrepareChart
-                               .new(params[:language], params[:area])
+                               .new(params[:mark], params[:language], params[:area])
                                .call
     end
   end
