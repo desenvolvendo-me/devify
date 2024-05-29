@@ -26,11 +26,15 @@
     <%= form_tag(manager_home_path, method: :get) do %>
       <div class="flex">
         <div class="mr-7">
-          <label for="language" class="form-label"><%= t 'manager.home.index.filter_1' %></label>
+          <label for="mark" class="form-label"><%= t 'manager.home.index.filter_1' %></label>
+          <%= select_tag :mark, options_for_select(@marks, params[:mark]), class: "form-select", include_blank: true %>
+        </div>
+        <div class="mr-7">
+          <label for="language" class="form-label"><%= t 'manager.home.index.filter_2' %></label>
           <%= select_tag :language, options_for_select(@languages.map { |l| [l.name, l.id] }, params[:language]), class: "form-select", include_blank: true %>
         </div>
         <div class="mr-7">
-          <label for="area" class="form-label"><%= t 'manager.home.index.filter_2' %></label>
+          <label for="area" class="form-label"><%= t 'manager.home.index.filter_3' %></label>
           <%= select_tag :area, options_for_select(@areas.map { |a| [a.name, a.id] }, params[:area]), class: "form-select", include_blank: true %>
         </div>
         <div class="flex items-end">
