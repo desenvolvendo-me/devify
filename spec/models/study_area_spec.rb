@@ -10,14 +10,15 @@
 require 'rails_helper'
 
 RSpec.describe StudyArea, type: :model do
-  it "is valid with a valid name" do
+  it 'is valid with a valid name' do
     programming_language = build(:programming_language)
     expect(programming_language).to be_valid
   end
 
-  it "is invalid without a name" do
+  it 'is invalid without a name' do
     programming_language = build(:programming_language, name: nil)
     programming_language.valid?
-    expect(programming_language.errors[:name]).to include("não pode ficar em branco")
+    expect(programming_language.errors[:name])
+      .to include('não pode ficar em branco')
   end
 end
