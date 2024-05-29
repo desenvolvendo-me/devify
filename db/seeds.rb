@@ -145,7 +145,7 @@ if Rails.env.development?
 
       progress_data << {
         date: date,
-        description: phase,
+        mark: phase,
         programming_language_id: language_records.sample.id,
         study_area_id: area_records.sample.id,
         value: value
