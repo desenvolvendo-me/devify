@@ -11,13 +11,25 @@ RSpec.describe Manager::HomeController, type: :controller do
   end
 
   describe 'GET #index' do
+    let!(:mark) { 'f0' }
     let!(:programming_language) { create(:programming_language) }
     let!(:study_area) { create(:study_area) }
-    let!(:student_progress) { create(:student_progress, programming_language: programming_language, study_area: study_area) }
+    let!(:student_progress) {
+      create(
+        :student_progress,
+        programming_language: programming_language,
+        study_area: study_area
+      )
+    }
 
     before do
-      allow(Home::PrepareChart).to receive(:new).and_return(double(call: { "2023-01-01" => 10 }))
-      get :index, params: { language: programming_language.id, area: study_area.id }
+      allow(Home::PrepareChart)
+        .to receive(:new).and_return(double(call: { '2023-01-01' => 10 }))
+      get :index, params: {
+        mark: mark,
+        language: programming_language.id,
+        area: study_area.id
+      }
     end
 
     it 'assigns @languages' do
@@ -29,11 +41,13 @@ RSpec.describe Manager::HomeController, type: :controller do
     end
 
     it 'calls Home::PrepareChart with correct parameters' do
-      expect(Home::PrepareChart).to have_received(:new).with(programming_language.id.to_s, study_area.id.to_s)
+      expect(Home::PrepareChart)
+        .to have_received(:new)
+        .with(mark, programming_language.id.to_s, study_area.id.to_s)
     end
 
     it 'assigns @student_progress_data' do
-      expect(assigns(:student_progress_data)).to eq({ "2023-01-01" => 10 })
+      expect(assigns(:student_progress_data)).to eq({ '2023-01-01' => 10 })
     end
   end
 end
