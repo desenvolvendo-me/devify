@@ -13,8 +13,7 @@
 #
 # Indexes
 #
-#  index_student_progresses_on_programming_language_id
-#     (programming_language_id)
+#  index_student_progresses_on_programming_language_id  (programming_language_id)
 #  index_student_progresses_on_study_area_id            (study_area_id)
 #
 # Foreign Keys
