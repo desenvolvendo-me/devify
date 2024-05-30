@@ -93,66 +93,6 @@ if Rails.env.development?
   Task.create(name: 'Treinamento do modelo', description: 'Treinar um modelo de chatbot',
               status: "done", goal: goal15)
 
-  # Reset the database (optional, uncomment if you want to reset the table before seeding)
-  # StudentProgress.delete_all
 
-  # Function to generate values with occasional drops
-  def generate_values(start_value, increments, drops)
-    values = []
-    current_value = start_value
-
-    10.times do |i|
-      if drops.include?(i)
-        current_value -= 1 # Apply a drop
-      else
-        current_value += increments
-      end
-      values << current_value
-    end
-
-    values
-  end
-
-  languages = ["Ruby", "Java", "Python", "JavaScript", "C++", "C#"]
-  language_records = languages.map do |language|
-    ProgrammingLanguage.create(name: language)
-  end
-
-  areas = ["Backend", "Frontend", "Data Science", "Mobile Development", "DevOps"]
-  area_records = areas.map do |area|
-    StudyArea.create(name: area)
-  end
-
-  increments = 3
-  phases = ['f0', 'f1', 'f2', 'f3', 'f4']
-  drops = {
-    'f0' => [3, 7],
-    'f1' => [2, 6],
-    'f2' => [1, 8],
-    'f3' => [4, 9],
-    'f4' => [5, 7]
-  }
-
-  # Gera os registros de progresso
-  progress_data = []
-
-  phases.each_with_index do |phase, index|
-    start_value = index * 10
-    values = generate_values(start_value, increments, drops[phase])
-
-    values.each_with_index do |value, i|
-      date = Date.today - ((phases.size * 10) - (index * 10 + i + 1)).weeks
-
-      progress_data << {
-        date: date,
-        mark: phase,
-        programming_language_id: language_records.sample.id,
-        study_area_id: area_records.sample.id,
-        value: value
-      }
-    end
-  end
-
-  # Create the records in the database
-  StudentProgress.create(progress_data)
+  StudentProgressSeeder.student_progress_seed
 end
