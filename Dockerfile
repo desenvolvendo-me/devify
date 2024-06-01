@@ -1,34 +1,42 @@
 FROM ruby:2.7.5
 
-# Install node & yarn
-RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
-RUN apt-get install -y nodejs
-RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
-RUN apt-get update && apt-get install -y yarn
+# Instale o Node.js e o Yarn
+RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
+    apt-get install -y nodejs && \
+    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
+    echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
+    apt-get update && \
+    apt-get install -y yarn
 
-# Install base deps or additional (e.g. tesseract)
+# Instale dependências do sistema
 ARG INSTALL_DEPENDENCIES
-RUN apt-get update -qq \
-  && apt-get install -y --no-install-recommends ${INSTALL_DEPENDENCIES} \
-    build-essential libpq-dev git libfreetype6-dev gsfonts libmagickwand-dev imagemagick \
-  && apt-get clean autoclean \
-  && apt-get autoremove -y \
-  && rm -rf \
-    /var/lib/apt \
-    /var/lib/dpkg \
-    /var/lib/cache \
-    /var/lib/log
+RUN apt-get update -qq && \
+    apt-get install -y --no-install-recommends ${INSTALL_DEPENDENCIES} \
+    build-essential libpq-dev git libfreetype6-dev gsfonts libmagickwand-dev imagemagick && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
+
+# Copie os arquivos da aplicação
 COPY . .
+
+# Instale as gems do Bundler
 RUN bundle install
 
-# Install deps Tailwind
-RUN rm -rf node_modules && npm install
-RUN npm install esbuild
+# Instale dependências do Node.js e Tailwind
+RUN rm -rf node_modules && npm install && npm install esbuild
 
-RUN bundle exec rake assets:precompile
-RUN bundle exec rake assets:clean
-RUN bin/rails tailwindcss:build
+# Pré-compile e limpe os assets
+#RUN bundle exec rake assets:precompile
+#RUN bundle exec rake assets:clean
+#RUN bin/rails tailwindcss:build
 
+# Instala railsui
+RUN rails railsui:install
+
+# Exponha a porta da aplicação
 EXPOSE 3000
+
+# Comando padrão para iniciar a aplicação
+CMD ["bin/rails", "server", "-b", "0.0.0.0"]
