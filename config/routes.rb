@@ -63,10 +63,11 @@ Rails.application.routes.draw do
       end
     end
 
-    get '', to: 'home#index', as: :home
+    get 'home', to: 'home#index', as: :home
+    get '', to: 'dashboard#index', as: :dashboard
   end
 
-  root to: 'manager/home#index'
+  root to: 'manager/dashboard#index'
 
   scope module: :external do
     get '', to: 'home#index', as: :home
@@ -84,5 +85,4 @@ Rails.application.routes.draw do
       patch :update_stripe_info
     end
   end
-
 end
