@@ -155,10 +155,10 @@ docker-compose up --build
 docker compose up
 ```
 ```
-docker-compose run web rails db:create
+docker-compose run web bin/rails db:create
 ```
 ```
-docker-compose run web rails db:migrate
+docker-compose run web bin/rails db:migrate
 ```
 ```
 docker-compose run web rspec
