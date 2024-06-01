@@ -35,7 +35,19 @@
 FactoryBot.define do
   factory :student_profile do
     user { nil }
-    main_language { "MyString" }
-    track { "MyString" }
+    main_language { "JavaScript" }
+    main_framework { "React" }
+    track { "Front-End" }
+    github { "https://github.com/example" }
+    wakatime { "https://wakatime.com/@example" }
+    linkedin { "https://linkedin.com/in/example" }
+    instagram { "https://instagram.com/example" }
+    technologies { ["HTML", "CSS", "JavaScript"] }
+    most_studied_language { ["JavaScript"] }
+    study_duration { "+ou- 6 meses" }
+    web_framework_studied { ["React"] }
+    web_framework_study_duration { "+ou- 6 meses" }
+    communication_preference { 7 }
+    exposure_preference { 5 }
   end
 end
