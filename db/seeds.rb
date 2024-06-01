@@ -9,11 +9,32 @@ if Rails.env.development?
   client_2 = Client.create!(document: '66778473061', user: user_2)
   client_3 = Client.create!(document: '66778473061', user: user_3)
 
-  student_profile_1 = StudentProfile.create!(user: user_1, language: '', track: '', wakatime: '', github: '', linkedin: '')
-  student_profile_2 = StudentProfile.create!(user: user_2, language: '', track: '', wakatime: '', github: '', linkedin: '')
-  student_profile_3 = StudentProfile.create!(user: user_3, language: '', track: '', wakatime: '', github: '', linkedin: '')
+  student_profile_1 = StudentProfile.create!(user: user_1, main_language: "JavaScript" ,
+                                             main_framework: "React" , track: "Front-End",
+                                             github: "https://github.com/user1" , wakatime:"https://wakatime.com/@user1",
+                                             linkedin: "https://linkedin.com/in/user1", instagram: "https://instagram.com/user1" ,
+                                             technologies: %w[HTML CSS JavaScript], most_studied_language: ["JavaScript"],
+                                             study_duration:"+ou- 6 meses", web_framework_studied: ["React"],
+                                             web_framework_study_duration: "+ou- 6 meses",
+                                             communication_preference: 7, exposure_preference: 5 )
+  student_profile_2 = StudentProfile.create!(user: user_2, main_language: "Ruby" ,
+                                             main_framework: "Rails" , track: "FullStack Monolito",
+                                             github: "https://github.com/user2" , wakatime:"https://wakatime.com/@user2",
+                                             linkedin: "https://linkedin.com/in/user2", instagram: "https://instagram.com/user2" ,
+                                             technologies: ["HTML CSS JavaScript", "Git e Github"], most_studied_language: ["JavaScript"],
+                                             study_duration:"+ou- 6 meses", web_framework_studied: %w[Rails React],
+                                             web_framework_study_duration: "+ou- 6 meses",
+                                             communication_preference: 8, exposure_preference: 2 )
+  student_profile_3 = StudentProfile.create!(user: user_3, main_language: "Java" ,
+                                             main_framework: "Spring" , track: "FullStack Monolito",
+                                             github: "https://github.com/user2" , wakatime:"https://wakatime.com/@user2",
+                                             linkedin: "https://linkedin.com/in/user2", instagram: "https://instagram.com/user2" ,
+                                             technologies: ["Banco de Dados", "Linguagem de Programação"], most_studied_language: %w[Spring Hibernate],
+                                             study_duration:"+ou- 6 meses", web_framework_studied: %w[Rails React],
+                                             web_framework_study_duration: "+ou- 6 meses",
+                                             communication_preference: 8, exposure_preference: 2 )
 
-  # Atribuição de avatar ao usuário 1
+
   user_1.avatar.attach(io: File.open(Rails.root.join('spec', 'support', 'images', 'avatar-1.jpg')), filename: 'avatar-1.jpg', content_type: 'image/jpg')
 
   goals_and_tasks = [
