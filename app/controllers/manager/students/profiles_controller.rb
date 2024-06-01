@@ -7,34 +7,37 @@ module Manager
       before_action :set_student_profile
 
       def show
-        if profile_incomplete?(@student_profile)
-          redirect_to edit_manager_students_profile_path, notice: 'Please complete your profile.'
-        end
+        return unless profile_incomplete?(@student_profile)
+
+        redirect_to edit_manager_students_profile_path, 
+                    notice: 'Please complete your profile.'
+        
       end
 
-      def edit
-      end
+      def edit; end
 
       def update
         user_attributes = user_params.reject { |k, v| v.blank? }
-        student_profile_attributes = student_profile_params.reject { |k, v| v.blank? }
+        student_profile_attributes = student_profile_params.reject { |k, v|
+ v.blank? }
 
         if current_user.update(user_attributes) && @student_profile.update(student_profile_attributes)
-          redirect_to manager_students_profile_path, notice: 'Profile was successfully updated.'
+          redirect_to manager_students_profile_path, 
+                      notice: 'Profile was successfully updated.'
         else
           render :edit
         end
       end
 
-      def evaluate
-        # Lógica para exibir a página de avaliação
-      end
+      def evaluate; end
 
       def submit_evaluation
-        student_profile_attributes = student_profile_params.reject { |k, v| v.blank? }
+        student_profile_attributes = student_profile_params.reject { |k, v|
+ v.blank? }
 
         if @student_profile.update(student_profile_attributes)
-          redirect_to manager_students_profile_path, notice: 'Evaluation was successfully submitted.'
+          redirect_to manager_students_profile_path,
+                      notice: 'Evaluation was successfully submitted.'
         else
           render :evaluate
         end
@@ -53,7 +56,8 @@ module Manager
       def student_profile_params
         params.require(:student_profile).permit(
           :instagram,
-          :language,
+          :main_language,
+          :main_framework,
           :track,
           :github,
           :wakatime,
@@ -74,7 +78,7 @@ module Manager
       end
 
       def profile_incomplete?(profile)
-        profile.language.blank? || profile.track.blank?
+        profile.main_language.blank? || profile.track.blank?
       end
     end
   end

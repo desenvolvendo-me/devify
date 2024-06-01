@@ -57,11 +57,11 @@
 
       <div class="my-6">
         <h4 class="font-normal text-primary-500 text-lg dark:text-primary-400">Language</h4>
-        <p class="block text-lg font-normal text-white"><%= current_user.student_profile.language %></p>
+        <p class="block text-lg font-normal text-white"><%= current_user.student_profile.main_language %></p>
       </div>
       <div class="my-6">
         <h4 class="font-normal text-primary-500 text-lg dark:text-primary-400">Framework</h4>
-        <p class="block text-lg font-normal text-white">Django</p>
+        <p class="block text-lg font-normal text-white"><%= current_user.student_profile.main_framework %></p>
       </div>
       <div class="mb-6">
         <span class="font-normal text-primary-500 text-lg dark:text-primary-400">Selected stack</span>
