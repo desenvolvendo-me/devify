@@ -7,8 +7,9 @@
 #  exposure_preference                 :integer
 #  github                              :text
 #  instagram                           :text
-#  language                            :string
 #  linkedin                            :text
+#  main_framework                      :string
+#  main_language                       :string
 #  most_studied_language               :text             default([]), is an Array
 #  most_studied_language_details       :string
 #  study_duration                      :string
