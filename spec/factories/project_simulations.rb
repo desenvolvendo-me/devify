@@ -13,10 +13,12 @@
 #
 FactoryBot.define do
   factory :project_simulation do
-    title { "MyString" }
-    description { "MyText" }
-    objectives { "MyText" }
-    tools { "MyText" }
-    expected_results { "MyText" }
+    title { FFaker::Lorem.sentence }
+    description { FFaker::Lorem.paragraph }
+    objectives { FFaker::Lorem.paragraph }
+    tools { FFaker::Lorem.paragraph }
+    expected_results { FFaker::Lorem.paragraph }
   end
 end
+
+
