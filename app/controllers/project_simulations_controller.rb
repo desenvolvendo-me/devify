@@ -1,6 +1,7 @@
 class ProjectSimulationsController < ApplicationController
   before_action :authenticate_user!
-    def index
+
+  def index
     @project_simulations = ProjectSimulation.all
   end
 
@@ -9,25 +10,22 @@ class ProjectSimulationsController < ApplicationController
   end
 
   def create
-    @project_simulation = ProjectSimulation.find(params[:project_id])
-    current_user.project_simulations << @project_simulation
+    service = ProjectSimulationService.new(current_user, params[:project_id])
+    result = service.create
 
-    respond_to do |format|
-      format.html { redirect_to project_simulations_path, notice: 'Projeto iniciado com sucesso.' }
-      format.json { render :show, status: :created, location: @project_simulation }
-    end
-  rescue ActiveRecord::RecordNotUnique => e
-    if e.message.include?("index_user_project_simulation_on_user_and_project")
-      redirect_to project_simulations_path, alert: 'Você já iniciou este projeto.'
+    if result[:success]
+      respond_to do |format|
+        format.html { redirect_to project_simulations_path, notice: 'Projeto iniciado com sucesso.' }
+        format.json { render :show, status: :created, location: result[:project_simulation] }
+      end
     else
-      redirect_to project_simulations_path, alert: 'Erro ao iniciar o projeto.'
+      redirect_to project_simulations_path, alert: result[:error]
     end
   end
 
-    private
+  private
 
-    def project_simulation_params
-      params.require(:project_simulation).permit(:project_id)
-    end
-
+  def project_simulation_params
+    params.require(:project_simulation).permit(:project_id)
+  end
 end
