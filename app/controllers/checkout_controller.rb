@@ -1,5 +1,4 @@
-
-require_relative './../businesses/gateways/stripe_gateway'
+require_relative './../business/gateways/stripe_gateway'
 class CheckoutController < ApplicationController
   before_action :set_stripe_gateway
 
