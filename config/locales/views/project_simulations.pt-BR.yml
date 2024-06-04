@@ -1,0 +1,13 @@
+pt-BR:
+  project_simulations:
+    index:
+      available_projects: 'Projetos Simulados Disponíveis'
+      details: 'Ver Detalhes'
+      start: 'Iniciar Projeto'
+    show:
+      description: 'Descrição'
+      goals: 'Objetivos'
+      tools: 'Ferramentas Necessárias'
+      results: 'Resultados Esperados'
+      start: 'Iniciar Projeto'
+      to_go_back: 'Voltar'
