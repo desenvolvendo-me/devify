@@ -1,4 +1,3 @@
-# app/business/project_simulation_service.rb
 class ProjectSimulationService
   def initialize(user, project_id)
     @user = user
