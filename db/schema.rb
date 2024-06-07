@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_06_01_014143) do
+ActiveRecord::Schema[7.0].define(version: 2024_05_22_135011) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -109,9 +109,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_01_014143) do
   create_table "student_profiles", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "main_language"
+    t.string "main_framework"
     t.string "track"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.text "github"
     t.text "wakatime"
     t.text "linkedin"
@@ -126,7 +125,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_01_014143) do
     t.string "study_duration_details"
     t.integer "communication_preference"
     t.integer "exposure_preference"
-    t.string "main_framework"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_student_profiles_on_user_id"
   end
 
