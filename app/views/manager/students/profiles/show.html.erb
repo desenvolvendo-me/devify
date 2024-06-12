@@ -1,0 +1,73 @@
+<% content_for :body_classes, "text-slate-800 dark:bg-slate-900 dark:text-slate-100 bg-white" %>
+
+<div class="container mx-auto sm:my-16 my-10 px-4">
+  <!-- Classificação de Perfil -->
+  <div class="text-center mb-10">
+    <h2 class="text-2xl font-bold text-slate-900 dark:text-slate-100">Classificação de Perfil</h2>
+    <p class="text-lg text-slate-700 dark:text-slate-300"> Ainda falta implementar </p>
+  </div>
+
+  <!-- Informação do Perfil -->
+  <div class="grid md:grid-cols-12 md:gap-16 gap-0">
+    <aside class="bg-white dark:bg-slate-800 dark:border-slate-600/50 border border-slate-300 lg:col-span-4 md:col-span-6 px-6 pt-10 rounded-lg col-span-1 md:max-w-[350px] shadow-sm shadow-slate-300/20 dark:shadow-none">
+
+      <!-- Botão de Editar -->
+      <div class="flex justify-between items-center mb-4">
+        <%= link_to "Edit", edit_manager_students_profile_path, class: "btn btn-sm btn-link" %>
+        <span class="rounded bg-green-100 text-green-800 font-medium px-2 py-1 text-xs dark:text-green-300 dark:bg-green-500/20">Level 0</span>
+      </div>
+
+      <div class="flex flex-col items-center justify-center mb-6">
+        <div class="relative">
+          <div class="bg-green-500 rounded-full w-12 h-12 flex items-center justify-center text-white text-lg font-bold">
+            <%= current_user.first_name[0] %>
+          </div>
+          <div class="bg-green-500 rounded-full w-3 h-3 right-1 -bottom-1 absolute border-2 border-white box-content"></div>
+        </div>
+        <h3 class="font-semibold text-slate-900 text-lg dark:text-slate-200 mt-2"><%= current_user.first_name %> <%= current_user.last_name %></h3>
+      </div>
+
+      <div class="flex items-center space-x-4 mb-4">
+        <% if current_user.student_profile.github.present? %>
+          <%= link_to current_user.student_profile.github, target: "_blank" do %>
+            <%= icon "github.svg", path: "social/github.svg", classes: "fill-current w-6 h-6 text-slate-400 hover:text-primary-500" %>
+          <% end %>
+        <% end %>
+        <% if current_user.student_profile.linkedin.present? %>
+          <%= link_to current_user.student_profile.linkedin, target: "_blank" do %>
+            <%= icon "linkedin.svg", path: "social/linkedin.svg", classes: "fill-current w-6 h-6 text-slate-400 hover:text-primary-500" %>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div class="flex justify-between mb-8">
+        <div class="text-left">
+          <span class="block text-3xl text-center font-bold text-white">00</span>
+          <span class="block text-sm text-center text-gray-400">Skills</span>
+        </div>
+        <div class="text-center">
+          <span class="block text-3xl font-bold text-white">00</span>
+          <span class="block text-sm text-gray-400">Domino da <p>Linguagem</p> </span>
+        </div>
+        <div class="text-right">
+          <span class="block text-3xl text-center font-bold text-white">00</span>
+          <span class="block text-sm text-center text-gray-400">Exposição</span>
+        </div>
+      </div>
+
+      <div class="my-6">
+        <h4 class="font-normal text-primary-500 text-lg dark:text-primary-400">Language</h4>
+        <p class="block text-lg font-normal text-white"><%= current_user.student_profile.main_language %></p>
+      </div>
+      <div class="my-6">
+        <h4 class="font-normal text-primary-500 text-lg dark:text-primary-400">Framework</h4>
+        <p class="block text-lg font-normal text-white"><%= current_user.student_profile.main_framework %></p>
+      </div>
+      <div class="mb-6">
+        <span class="font-normal text-primary-500 text-lg dark:text-primary-400">Selected stack</span>
+        <span class="block text-lg font-normal text-white"><%= current_user.student_profile.track %></span>
+      </div>
+      <%= link_to "Evaluate Profile", evaluate_manager_students_profile_path, class: "btn btn-primary mb-6" %>
+    </aside>
+  </div>
+</div>
