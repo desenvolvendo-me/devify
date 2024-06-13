@@ -26,6 +26,7 @@ RSpec.describe Manager::DashboardController, type: :controller do
       allow(Home::PrepareChart)
         .to receive(:new).and_return(double(call: { '2023-01-01' => 10 }))
       get :index, params: {
+        user: user,
         mark: mark,
         language: programming_language.id,
         area: study_area.id
@@ -43,7 +44,7 @@ RSpec.describe Manager::DashboardController, type: :controller do
     it 'calls Home::PrepareChart with correct parameters' do
       expect(Home::PrepareChart)
         .to have_received(:new)
-        .with(mark, programming_language.id.to_s, study_area.id.to_s)
+        .with(user, mark, programming_language.id.to_s, study_area.id.to_s)
     end
 
     it 'assigns @student_progress_data' do

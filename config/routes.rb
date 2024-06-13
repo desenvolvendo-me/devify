@@ -34,7 +34,7 @@ Rails.application.routes.draw do
     mount Railsui::Engine, at: "/railsui"
   end
 
-  root action: :index, controller: "railsui/page"
+  root action: :index, controller: "manager/dashboard"
 
   devise_for :users
   mount Sidekiq::Web => '/sidekiq'
@@ -63,7 +63,8 @@ Rails.application.routes.draw do
         post :many
       end
     end
-    get '', to: 'home#index', as: :home
+    # get '', to: 'home#index', as: :home
+    get '', to: 'dashboard#index', as: :dashboard
 
     namespace :students do
       resource :profile, only: [:show, :edit, :update], controller: 'profiles' do
