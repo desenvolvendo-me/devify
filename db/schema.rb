@@ -158,7 +158,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_29_131222) do
 
   create_table "student_progresses", force: :cascade do |t|
     t.date "date"
-    t.string "description"
+    t.string "mark"
     t.integer "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

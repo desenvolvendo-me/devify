@@ -9,11 +9,6 @@ if Rails.env.development?
   client_2 = Client.create!(document: '66778473061', user: user_2)
   client_3 = Client.create!(document: '66778473061', user: user_3)
 
-  user_1.client = client_1
-  user_1.save
-  user_2.client = client_2
-  user_2.save
-
   student_profile_1 = StudentProfile.create!(user: user_1, main_language: "JavaScript" ,
                                              main_framework: "React" , track: "Front-End",
                                              github: "https://github.com/user1" , wakatime:"https://wakatime.com/@user1",
@@ -92,57 +87,6 @@ if Rails.env.development?
     goal: goal_for_user_2
   )
 
-  # Reset the database (optional, uncomment if you want to reset the table before seeding)
-  # StudentProgress.delete_all
 
-  # Function to generate values with occasional drops
-  def generate_values(start_value, increments, drops)
-    values = []
-    current_value = start_value
-
-    10.times do |i|
-      if drops.include?(i)
-        current_value -= 1 # Apply a drop
-      else
-        current_value += increments
-      end
-      values << current_value
-    end
-
-    values
-  end
-
-  # Define the increments and drops for each phase
-  increments = 3
-  phases = ['f0', 'f1', 'f2', 'f3', 'f4']
-  drops = {
-    'f0' => [3, 7],
-    'f1' => [2, 6],
-    'f2' => [1, 8],
-    'f3' => [4, 9],
-    'f4' => [5, 7]
-  }
-
-  # Generate the records
-  progress_data = []
-
-  phases.each_with_index do |phase, index|
-    start_value = index * 10
-    values = generate_values(start_value, increments, drops[phase])
-
-    values.each_with_index do |value, i|
-      date = Date.today - ((phases.size * 10) - (index * 10 + i + 1)).weeks
-
-      progress_data << {
-        date: date,
-        description: phase,
-        programming_language: 'Ruby on Rails',
-        study_area: 'Backend',
-        value: value
-      }
-    end
-  end
-
-  # Create the records in the database
-  StudentProgress.create(progress_data)
+  StudentProgressSeeder.student_progress_seed
 end
