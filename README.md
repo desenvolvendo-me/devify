@@ -128,14 +128,14 @@ npm install
 rails railsui:install
 ```
 
-#### Migrar Banco de Dados
-```
-rails db:drop && rails db:create && rails db:migrate && rails db:seed RAILS_ENV=development
-```
-
 #### Redis
 ```
 redis-server
+```
+
+#### Migrar Banco de Dados
+```
+rails db:drop && rails db:create && rails db:migrate && rails db:seed RAILS_ENV=development
 ```
 
 #### Executando o Servidor
@@ -155,10 +155,10 @@ docker-compose up --build
 docker compose up
 ```
 ```
-docker-compose run web rails db:create
+docker-compose run web bin/rails db:create
 ```
 ```
-docker-compose run web rails db:migrate
+docker-compose run web bin/rails db:migrate
 ```
 ```
 docker-compose run web rspec
