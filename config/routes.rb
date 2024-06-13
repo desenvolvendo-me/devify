@@ -34,11 +34,7 @@ Rails.application.routes.draw do
     mount Railsui::Engine, at: "/railsui"
   end
 
-
-  # Inherits from Railsui::PageController#index
-  # To overide, add your own page#index view or change to a new root
-  # Visit the start page for Rails UI any time at /railsui/start
-  root action: :index, controller: "railsui/page"
+  root action: :index, controller: "manager/dashboard"
 
   devise_for :users
   mount Sidekiq::Web => '/sidekiq'
@@ -67,8 +63,7 @@ Rails.application.routes.draw do
         post :many
       end
     end
-
-    get 'home', to: 'home#index', as: :home
+    # get '', to: 'home#index', as: :home
     get '', to: 'dashboard#index', as: :dashboard
 
     namespace :students do
@@ -80,8 +75,6 @@ Rails.application.routes.draw do
       end
     end
   end
-
-  root to: 'manager/dashboard#index'
 
   scope module: :external do
     get '', to: 'home#index', as: :home

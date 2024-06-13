@@ -10,16 +10,19 @@
 #  updated_at              :datetime         not null
 #  programming_language_id :bigint
 #  study_area_id           :bigint
+#  user_id                 :bigint
 #
 # Indexes
 #
 #  index_student_progresses_on_programming_language_id  (programming_language_id)
 #  index_student_progresses_on_study_area_id            (study_area_id)
+#  index_student_progresses_on_user_id                  (user_id)
 #
 # Foreign Keys
 #
 #  fk_rails_...  (programming_language_id => programming_languages.id)
 #  fk_rails_...  (study_area_id => study_areas.id)
+#  fk_rails_...  (user_id => users.id)
 #
 require 'rails_helper'
 
@@ -62,6 +65,13 @@ RSpec.describe StudentProgress, type: :model do
     student_progress = build(:student_progress, study_area: nil)
     student_progress.valid?
     expect(student_progress.errors[:study_area])
+      .to include('não pode ficar em branco')
+  end
+
+  it 'is invalid without a user' do
+    student_progress = build(:student_progress, user: nil)
+    student_progress.valid?
+    expect(student_progress.errors[:user])
       .to include('não pode ficar em branco')
   end
 end
