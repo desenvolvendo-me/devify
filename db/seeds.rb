@@ -9,11 +9,6 @@ if Rails.env.development?
   client_2 = Client.create!(document: '66778473061', user: user_2)
   client_3 = Client.create!(document: '66778473061', user: user_3)
 
-  user_1.client = client_1
-  user_1.save
-  user_2.client = client_2
-  user_2.save
-
   student_profile_1 = StudentProfile.create!(user: user_1, main_language: "JavaScript" ,
                                              main_framework: "React" , track: "Front-End",
                                              github: "https://github.com/user1" , wakatime:"https://wakatime.com/@user1",
@@ -91,4 +86,7 @@ if Rails.env.development?
     status: 'todo',
     goal: goal_for_user_2
   )
+
+
+  StudentProgressSeeder.student_progress_seed
 end

@@ -10,16 +10,19 @@
 #  updated_at              :datetime         not null
 #  programming_language_id :bigint
 #  study_area_id           :bigint
+#  user_id                 :bigint
 #
 # Indexes
 #
 #  index_student_progresses_on_programming_language_id  (programming_language_id)
 #  index_student_progresses_on_study_area_id            (study_area_id)
+#  index_student_progresses_on_user_id                  (user_id)
 #
 # Foreign Keys
 #
 #  fk_rails_...  (programming_language_id => programming_languages.id)
 #  fk_rails_...  (study_area_id => study_areas.id)
+#  fk_rails_...  (user_id => users.id)
 #
 FactoryBot.define do
   factory :student_progress do
@@ -28,5 +31,6 @@ FactoryBot.define do
     value { rand(1..100) }
     association :programming_language
     association :study_area
+    association :user
   end
 end
