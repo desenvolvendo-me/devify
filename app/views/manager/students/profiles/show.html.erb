@@ -1,15 +1,13 @@
 <% content_for :body_classes, "text-slate-800 dark:bg-slate-900 dark:text-slate-100 bg-white" %>
+<div class="bg-white dark:bg-slate-800 dark:border-slate-600/50 border border-slate-300 px-6 pt-8 rounded-lg shadow-sm shadow-slate-300/20 dark:shadow-none">
+  <h1 class="text-4xl font-bold text-slate-900 dark:text-slate-100 mb-4">Perfil Classification</h1>
+</div>
 
 <div class="container mx-auto sm:my-16 my-10 px-4">
-  <!-- Classificação de Perfil -->
-  <div class="text-center mb-10">
-    <h2 class="text-2xl font-bold text-slate-900 dark:text-slate-100">Classificação de Perfil</h2>
-    <p class="text-lg text-slate-700 dark:text-slate-300"> Ainda falta implementar </p>
-  </div>
-
-  <!-- Informação do Perfil -->
-  <div class="grid md:grid-cols-12 md:gap-16 gap-0">
-    <aside class="bg-white dark:bg-slate-800 dark:border-slate-600/50 border border-slate-300 lg:col-span-4 md:col-span-6 px-6 pt-10 rounded-lg col-span-1 md:max-w-[350px] shadow-sm shadow-slate-300/20 dark:shadow-none">
+  <!-- Classificação de Perfil e Informação do Perfil -->
+  <div class="grid md:grid-cols-12 gap-16">
+    <!-- Informação do Perfil -->
+    <aside class="lg:col-span-4 md:col-span-5 col-span-12 bg-white dark:bg-slate-800 dark:border-slate-600/50 border border-slate-300 px-6 pt-10 rounded-lg shadow-sm shadow-slate-300/20 dark:shadow-none">
 
       <!-- Botão de Editar -->
       <div class="flex justify-between items-center mb-4">
@@ -42,16 +40,16 @@
 
       <div class="flex justify-between mb-8">
         <div class="text-left">
-          <span class="block text-3xl text-center font-bold text-white">00</span>
+          <span class="block text-3xl text-center font-bold text-white"><%= @skills %></span>
           <span class="block text-sm text-center text-gray-400">Skills</span>
         </div>
         <div class="text-center">
-          <span class="block text-3xl font-bold text-white">00</span>
-          <span class="block text-sm text-gray-400">Domino da <p>Linguagem</p> </span>
+          <span class="block text-3xl font-bold text-white"><%= @language_mastery %></span>
+          <span class="block text-sm text-gray-400">Mastery Language</span>
         </div>
         <div class="text-right">
-          <span class="block text-3xl text-center font-bold text-white">00</span>
-          <span class="block text-sm text-center text-gray-400">Exposição</span>
+          <span class="block text-3xl text-center font-bold text-white"><%= @exposure %></span>
+          <span class="block text-sm text-center text-gray-400">Exposure</span>
         </div>
       </div>
 
@@ -69,5 +67,13 @@
       </div>
       <%= link_to "Evaluate Profile", evaluate_manager_students_profile_path, class: "btn btn-primary mb-6" %>
     </aside>
+
+    <!-- Classificação de Perfil -->
+    <div class="lg:col-span-8 md:col-span-7 col-span-12">
+
+        <%= render 'show_evaluate_survey', student_profile: @student_profile %>
+      </div>
+
+    </div>
   </div>
 </div>
