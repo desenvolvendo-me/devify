@@ -18,6 +18,9 @@
 class Client < ApplicationRecord
   belongs_to :user
 
+  belongs_to :user
+  has_one :student_profile
+
   def update_stripe_customer
     begin
       customer_name = [user.first_name, user.last_name].compact.join(' ').strip

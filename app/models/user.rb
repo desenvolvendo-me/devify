@@ -36,6 +36,7 @@ class User < ApplicationRecord
   after_create :send_confirmation_instructions
 
   has_one :client, dependent: :destroy
+  has_one :student_profile, dependent: :destroy
 
   has_person_name
   has_one_attached :avatar
@@ -46,9 +47,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :confirmable, :trackable
 
-  has_one :client, dependent: :destroy
-  has_one_attached :avatar
   accepts_nested_attributes_for :client
+  accepts_nested_attributes_for :student_profile
 
   def send_email_changed_notification?
     previous_changes.include?('email') && persisted?

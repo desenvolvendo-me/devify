@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_05_28_012720) do
+ActiveRecord::Schema[7.0].define(version: 2024_05_29_131222) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -106,6 +106,56 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_28_012720) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "programming_languages", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "student_profiles", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "main_language"
+    t.string "main_framework"
+    t.string "track"
+    t.text "github"
+    t.text "wakatime"
+    t.text "linkedin"
+    t.text "instagram"
+    t.text "technologies", default: [], array: true
+    t.text "most_studied_language", default: [], array: true
+    t.string "study_duration"
+    t.text "web_framework_studied", default: [], array: true
+    t.string "web_framework_study_duration"
+    t.string "most_studied_language_details"
+    t.string "web_framework_studied_other_details"
+    t.string "study_duration_details"
+    t.integer "communication_preference"
+    t.integer "exposure_preference"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_student_profiles_on_user_id"
+  end
+
+  create_table "student_progresses", force: :cascade do |t|
+    t.date "date"
+    t.string "mark"
+    t.integer "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "programming_language_id"
+    t.bigint "study_area_id"
+    t.bigint "user_id"
+    t.index ["programming_language_id"], name: "index_student_progresses_on_programming_language_id"
+    t.index ["study_area_id"], name: "index_student_progresses_on_study_area_id"
+    t.index ["user_id"], name: "index_student_progresses_on_user_id"
+  end
+
+  create_table "study_areas", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "project_simulations", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -162,4 +212,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_28_012720) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "student_profiles", "users"
+  add_foreign_key "student_progresses", "programming_languages"
+  add_foreign_key "student_progresses", "study_areas"
+  add_foreign_key "student_progresses", "users"
 end

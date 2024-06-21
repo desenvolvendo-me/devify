@@ -1,0 +1,10 @@
+<%= javascript_include_tag "https://www.google.com/jsapi" %>
+<%= javascript_include_tag "chartkick" %>
+
+<script type="text/javascript">
+    var user = <%= @user.to_json.html_safe %>;
+</script>
+
+<%= line_chart Home::PrepareChart
+                 .new(@user, params[:mark], params[:language], params[:area])
+                 .call %>
