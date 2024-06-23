@@ -23,6 +23,12 @@ module Students
       ((communication_preference + exposure_preference) / 2.0).round
     end
 
+    def calculate_survey_level
+      total_points = skills + language_mastery + exposure
+      determine_level(total_points)
+    end
+
+
     private
 
     def parse_study_duration(duration, other_details)
@@ -41,6 +47,35 @@ module Students
                  0
                end
       points
+    end
+
+    def determine_level(total_points)
+      case total_points
+      when 0..19
+        1
+      when 20..39
+        2
+      when 40..59
+        3
+      when 60..79
+        4
+      when 80..99
+        5
+      when 100..119
+        6
+      when 120..139
+        7
+      when 140..159
+        8
+      when 160..179
+        9
+      when 180..199
+        10
+      when 200..219
+        11
+      else
+        12
+      end
     end
   end
 end
