@@ -13,6 +13,10 @@ module Manager
         @skills = metrics_service.skills
         @language_mastery = metrics_service.language_mastery
         @exposure = metrics_service.exposure
+        @survey_level = metrics_service.calculate_survey_level
+
+        profile_metrics_service = ::Students::ProfileMetricsService.new(@student_profile)
+        @profile_level = profile_metrics_service.calculate_profile_level
       end
 
       def edit
