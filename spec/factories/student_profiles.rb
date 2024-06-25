@@ -2,27 +2,29 @@
 #
 # Table name: student_profiles
 #
-#  id                                  :bigint           not null, primary key
-#  communication_preference            :integer
-#  exposure_preference                 :integer
-#  github                              :text
-#  instagram                           :text
-#  linkedin                            :text
-#  main_framework                      :string
-#  main_language                       :string
-#  most_studied_language               :text             default([]), is an Array
-#  most_studied_language_details       :string
-#  study_duration                      :string
-#  study_duration_details              :string
-#  technologies                        :text             default([]), is an Array
-#  track                               :string
-#  wakatime                            :text
-#  web_framework_studied               :text             default([]), is an Array
-#  web_framework_studied_other_details :string
-#  web_framework_study_duration        :string
-#  created_at                          :datetime         not null
-#  updated_at                          :datetime         not null
-#  user_id                             :bigint           not null
+#  id                                   :bigint           not null, primary key
+#  communication_preference             :integer
+#  exposure_preference                  :integer
+#  github                               :text
+#  instagram                            :text
+#  linkedin                             :text
+#  main_framework                       :string
+#  main_language                        :string
+#  most_studied_language                :text             default([]), is an Array
+#  most_studied_language_other_details  :text             default([]), is an Array
+#  study_duration                       :string
+#  study_duration_details               :string
+#  technologies                         :text             default([]), is an Array
+#  technology_other_details             :text             default([]), is an Array
+#  track                                :string
+#  wakatime                             :text
+#  web_framework_studied                :text             default([]), is an Array
+#  web_framework_studied_other_details  :text             default([]), is an Array
+#  web_framework_study_duration         :string
+#  web_framework_study_duration_details :integer          default(0)
+#  created_at                           :datetime         not null
+#  updated_at                           :datetime         not null
+#  user_id                              :bigint           not null
 #
 # Indexes
 #
@@ -34,20 +36,26 @@
 #
 FactoryBot.define do
   factory :student_profile do
-    user { nil }
-    main_language { "JavaScript" }
-    main_framework { "React" }
-    track { "Front-End" }
-    github { "https://github.com/example" }
-    wakatime { "https://wakatime.com/@example" }
-    linkedin { "https://linkedin.com/in/example" }
-    instagram { "https://instagram.com/example" }
-    technologies { ["HTML", "CSS", "JavaScript"] }
-    most_studied_language { ["JavaScript"] }
+    association :user
+    main_language { "Ruby" }
+    main_framework { "Rails" }
+    track { "Full Stack" }
+    github { "http://github.com/user" }
+    wakatime { "http://wakatime.com/user" }
+    linkedin { "http://linkedin.com/in/user" }
+    instagram { "http://instagram.com/user" }
+    technologies { ["Tech1", "Tech2"] }
+    most_studied_language { ["Ruby"] }
     study_duration { "+ou- 6 meses" }
-    web_framework_studied { ["React"] }
+    web_framework_studied { ["Rails"] }
     web_framework_study_duration { "+ou- 6 meses" }
-    communication_preference { 7 }
-    exposure_preference { 5 }
+    most_studied_language_other_details { ["OtherLang"] }
+    web_framework_studied_other_details { ["OtherFramework"] }
+    study_duration_details { 6 }
+    communication_preference { 5 }
+    exposure_preference { 7 }
+    technology_other_details { ["OtherTech"] }
+    web_framework_study_duration_details { 6 }
   end
 end
+

@@ -1,5 +1,3 @@
-# app/controllers/manager/students/profiles_controller.rb
-
 module Manager
   module Students
     class ProfilesController < ApplicationController
@@ -7,37 +5,42 @@ module Manager
       before_action :set_student_profile
 
       def show
-        return unless profile_incomplete?(@student_profile)
+        if profile_incomplete?(@student_profile)
+          redirect_to edit_manager_students_profile_path, notice: 'Please complete your profile.'
+        end
 
-        redirect_to edit_manager_students_profile_path, 
-                    notice: 'Please complete your profile.'
-        
+        metrics_service = ::Students::StudentProfileMetricsService.new(@student_profile)
+        @skills = metrics_service.skills
+        @language_mastery = metrics_service.language_mastery
+        @exposure = metrics_service.exposure
+        @survey_level = metrics_service.calculate_survey_level
+
+        profile_metrics_service = ::Students::ProfileMetricsService.new(@student_profile)
+        @profile_level = profile_metrics_service.calculate_profile_level
       end
 
-      def edit; end
+      def edit
+      end
 
       def update
         user_attributes = user_params.reject { |k, v| v.blank? }
-        student_profile_attributes = student_profile_params.reject { |k, v|
- v.blank? }
+        student_profile_attributes = ::Students::StudentProfileService.process_params(student_profile_params.reject { |k, v| v.blank? })
 
         if current_user.update(user_attributes) && @student_profile.update(student_profile_attributes)
-          redirect_to manager_students_profile_path, 
-                      notice: 'Profile was successfully updated.'
+          redirect_to manager_students_profile_path, notice: 'Profile was successfully updated.'
         else
           render :edit
         end
       end
 
-      def evaluate; end
+      def evaluate
+      end
 
       def submit_evaluation
-        student_profile_attributes = student_profile_params.reject { |k, v|
- v.blank? }
+        student_profile_attributes = ::Students::StudentProfileService.process_params(student_profile_params.reject { |k, v| v.blank? })
 
         if @student_profile.update(student_profile_attributes)
-          redirect_to manager_students_profile_path,
-                      notice: 'Evaluation was successfully submitted.'
+          redirect_to manager_students_profile_path, notice: 'Evaluation was successfully submitted.'
         else
           render :evaluate
         end
@@ -62,13 +65,12 @@ module Manager
           :github,
           :wakatime,
           :linkedin,
-          :other_technology_details,
-          :most_studied_language_details,
+          :technology_other_details,
+          :most_studied_language_other_details,
           :study_duration,
           :study_duration_details,
           :web_framework_study_duration,
           :web_framework_study_duration_details,
-          :web_framework_studied_other_details,
           :communication_preference,
           :exposure_preference,
           technologies: [],

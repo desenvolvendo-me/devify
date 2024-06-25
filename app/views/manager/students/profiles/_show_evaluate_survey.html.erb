@@ -1,0 +1,68 @@
+<div class="bg-white dark:bg-slate-800 dark:border-slate-600/50 border border-slate-300 px-6 pt-10 rounded-lg shadow-sm shadow-slate-300/20 dark:shadow-none">
+  <div class="flex justify-between items-center mb-4">
+    <h2 class="text-2xl font-bold text-slate-900 dark:text-slate-100">Survey Summary</h2>
+    <span class="rounded px-2 py-1 text-xs font-medium <%= level_color_class(@survey_level) %>">Level <%= @survey_level %></span>
+  </div>
+
+  <div class="my-6">
+    <h4 class="font-normal text-primary-500 text-lg dark:text-primary-400">Technologies</h4>
+    <ul>
+      <% @student_profile.technologies.each do |tech| %>
+        <li class="block text-lg font-normal text-white"><%= tech %></li>
+      <% end %>
+      <% if @student_profile.technology_other_details.present? %>
+        <li class="block text-lg font-normal text-white"><%= @student_profile.technology_other_details.join(', ') %></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="my-6">
+    <h4 class="font-normal text-primary-500 text-lg dark:text-primary-400">Most studied language</h4>
+    <ul>
+      <% @student_profile.most_studied_language.each do |language| %>
+        <li class="block text-lg font-normal text-white"><%= language %></li>
+      <% end %>
+      <% if @student_profile.most_studied_language_other_details.present? %>
+        <li class="block text-lg font-normal text-white"><%= @student_profile.most_studied_language_other_details.join(', ') %></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="my-6">
+    <h4 class="font-normal text-primary-500 text-lg dark:text-primary-400">Study Duration</h4>
+    <p class="block text-lg font-normal text-white"><%= @student_profile.study_duration %></p>
+    <% if @student_profile.study_duration_details.present? %>
+      <p class="block text-lg font-normal text-white"><%= @student_profile.study_duration_details %> months</p>
+    <% end %>
+  </div>
+
+  <div class="my-6">
+    <h4 class="font-normal text-primary-500 text-lg dark:text-primary-400">Studied Web Framework</h4>
+    <ul>
+      <% @student_profile.web_framework_studied.each do |framework| %>
+        <li class="block text-lg font-normal text-white"><%= framework %></li>
+      <% end %>
+      <% if @student_profile.web_framework_studied_other_details.present? %>
+        <li class="block text-lg font-normal text-white"><%= @student_profile.web_framework_studied_other_details.join(', ') %></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="my-6">
+    <h4 class="font-normal text-primary-500 text-lg dark:text-primary-400">Framework Study Duration</h4>
+    <p class="block text-lg font-normal text-white"><%= @student_profile.web_framework_study_duration %></p>
+    <% if @student_profile.web_framework_study_duration_details.present? %>
+      <p class="block text-lg font-normal text-white"><%= @student_profile.web_framework_study_duration_details %> months</p>
+    <% end %>
+  </div>
+
+  <div class="my-6">
+    <h4 class="font-normal text-primary-500 text-lg dark:text-primary-400">Communication Preference</h4>
+    <p class="block text-lg font-normal text-white"><%= @student_profile.communication_preference %></p>
+  </div>
+
+  <div class="my-6">
+    <h4 class="font-normal text-primary-500 text-lg dark:text-primary-400">Exposure Preference</h4>
+    <p class="block text-lg font-normal text-white"><%= @student_profile.exposure_preference %></p>
+  </div>
+</div>

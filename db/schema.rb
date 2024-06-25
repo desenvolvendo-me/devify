@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_05_29_131222) do
+ActiveRecord::Schema[7.0].define(version: 2024_06_17_120641) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -126,13 +126,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_29_131222) do
     t.string "study_duration"
     t.text "web_framework_studied", default: [], array: true
     t.string "web_framework_study_duration"
-    t.string "most_studied_language_details"
-    t.string "web_framework_studied_other_details"
+    t.text "most_studied_language_other_details", default: [], array: true
+    t.text "web_framework_studied_other_details", default: [], array: true
     t.string "study_duration_details"
     t.integer "communication_preference"
     t.integer "exposure_preference"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "technology_other_details", default: [], array: true
+    t.integer "web_framework_study_duration_details", default: 0
     t.index ["user_id"], name: "index_student_profiles_on_user_id"
   end
 

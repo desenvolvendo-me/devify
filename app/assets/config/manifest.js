@@ -4,3 +4,4 @@
 //= link chartkick.js
 //= link application.js
 //= link social/twitter.png
+//= link student_profile_validation.js

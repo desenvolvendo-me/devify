@@ -1,5 +1,3 @@
-<!-- app/views/manager/students/profiles/evaluate.html.erb -->
-
 <div class="container mx-auto sm:my-16 my-10 px-4">
   <h1 class="mb-4 text-3xl font-extrabold text-slate-900 dark:text-slate-100">Evaluate Profile</h1>
 
@@ -17,12 +15,12 @@
 
     <div class="grid grid-cols-1 sm:grid-cols-2 sm:gap-x-16 sm:gap-y-10 gap-6 items-center">
       <div class="col-span-2">
-        <%= f.label :instagram, "Qual o seu instagram?", class: "form-label text-xl" %>
+        <%= f.label :instagram, "What is your instagram?", class: "form-label text-xl" %>
         <%= f.text_field :instagram, class: "form-input" %>
       </div>
 
       <div class="col-span-2">
-        <%= f.label :technologies, "Quais tecnologias você já fez um curso?", class: "form-label text-xl" %>
+        <%= f.label :technologies, "What technologies have you taken a course?", class: "form-label text-xl" %>
         <div class="form-group flex flex-col space-y-2">
           <% options = ["Lógica de Programação", "Git e Github", "Html, Css e Javascript", "Banco de Dados", "Linguagem de Programação", "Framework Web", "Outro:"] %>
           <% options.each do |option| %>
@@ -31,12 +29,12 @@
               <%= label_tag option, option, class: "ml-2" %>
             </div>
           <% end %>
-          <%= f.text_field :other_technology_details, placeholder: "Outro (Especifique)", class: "form-input" %>
+          <%= f.text_field :technology_other_details, placeholder: "Outro (Especifique)", class: "form-input" %>
         </div>
       </div>
 
       <div class="col-span-2">
-        <%= f.label :most_studied_language, "Qual linguagem de programação você mais estudou?", class: "form-label text-xl" %>
+        <%= f.label :most_studied_language, "Which programming language did you study the most?", class: "form-label text-xl" %>
         <div class="form-group flex flex-col space-y-2">
           <% languages = ["Javascript (Nodejs)", "Java", "Python", "PHP", "Ruby", "Outro:"] %>
           <% languages.each do |language| %>
@@ -45,12 +43,12 @@
               <%= label_tag language, language, class: "ml-2" %>
             </div>
           <% end %>
-          <%= f.text_field :most_studied_language_details, placeholder: "Outro (Especifique)", class: "form-input" %>
+          <%= f.text_field :most_studied_language_other_details, placeholder: "Outro (Especifique)", class: "form-input" %>
         </div>
       </div>
 
       <div class="col-span-1">
-        <%= f.label :study_duration, "Quanto tempo estudou sua linguagem?", class: "form-label text-xl" %>
+        <%= f.label :study_duration, "How long did you study your language?", class: "form-label text-xl" %>
         <div class="form-group flex flex-col space-y-2">
           <p> <%= f.radio_button :study_duration, "Nunca", class: "form-input-radio" %>
             <%= f.label :study_duration_never, "Nunca", class: "ml-2" %></p>
@@ -71,7 +69,7 @@
       </div>
 
       <div class="col-span-2">
-        <%= f.label :web_framework_studied, "Qual framework web da sua linguagem de programação você estudou?", class: "form-label text-xl" %>
+        <%= f.label :web_framework_studied, "What web framework in your programming language did you study?", class: "form-label text-xl" %>
         <div class="form-group flex flex-col space-y-2">
           <% frameworks = ["Rails", "Django", "Laravel", "Spring", "Express.js", "Outro:"] %>
           <% frameworks.each do |framework| %>
@@ -85,7 +83,7 @@
       </div>
 
       <div class="col-span-1">
-        <%= f.label :web_framework_study_duration, "Quanto tempo estudou o framework web?", class: "form-label text-xl" %>
+        <%= f.label :web_framework_study_duration, "How long did you study the web framework?", class: "form-label text-xl" %>
         <div class="form-group flex flex-col space-y-2">
           <p> <%= f.radio_button :web_framework_study_duration, "Nunca", class: "form-input-radio" %>
             <%= f.label :web_framework_study_duration_never, "Nunca", class: "ml-2" %></p>
@@ -106,7 +104,7 @@
       </div>
 
       <div class="col-span-2 text-center">
-        <%= f.label :communication_preference, "Quanto você gosta de falar com as pessoas?", class: "form-label block mb-4 text-xl" %>
+        <%= f.label :communication_preference, "How much do you like talking to people?", class: "form-label block mb-4 text-xl" %>
         <div class="form-group flex justify-center space-x-4">
           <% (1..10).each do |i| %>
             <div class="flex flex-col items-center">
@@ -118,7 +116,7 @@
       </div>
 
       <div class="col-span-2 text-center">
-        <%= f.label :exposure_preference, "Quanto você gosta de se expor?", class: "form-label block mb-4 text-xl" %>
+        <%= f.label :exposure_preference, "How much do you like to expose yourself?", class: "form-label block mb-4 text-xl" %>
         <div class="form-group flex justify-center space-x-4">
           <% (1..10).each do |i| %>
             <div class="flex flex-col items-center">
