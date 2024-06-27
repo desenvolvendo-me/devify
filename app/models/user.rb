@@ -31,6 +31,8 @@
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 class User < ApplicationRecord
+  has_and_belongs_to_many :project_simulations
+
   after_create :send_confirmation_instructions
 
   has_one :client, dependent: :destroy

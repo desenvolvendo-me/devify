@@ -1,0 +1,29 @@
+<section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5" data-controller="project_simulations--index" data-project_simulations--index-finish-endpoint-value="<%= manager_goals_done_many_path %>">
+  <div class="max-w-5xl mx-auto px-4 my-16">
+    <div class="flex items-center justify-between pb-6 border-b dark:border-slate-700">
+      <h1 class="text-4xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight"><%= t('.available_projects') %></h1>
+    </div>
+
+    <div class="row">
+      <% @project_simulations.each do |project| %>
+        <div class="col-md-4">
+          <div class="card mb-4">
+            <div class="card-body">
+              <h2 class="card-title"><%= link_to "<strong>#{project.title}</strong>".html_safe, project_simulation_path(project) %></h2>
+              <p class="card-text"><%= project.description %></p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <%= link_to t('.details'), project_simulation_path(project), class: 'btn btn-link' %>
+                  <%= form_with url: project_simulations_path, method: :post, local: true do |form| %>
+                    <%= form.hidden_field :project_id, value: project.id %>
+                    <%= form.submit t('.start'), class: 'btn btn-primary' %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

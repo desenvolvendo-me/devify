@@ -1,5 +1,4 @@
 require 'rails_helper'
-require_relative '../../../app/businesses/gateways/stripe_gateway'
 
 RSpec.describe StripeGateway do
   let(:gateway) { StripeGateway.new }

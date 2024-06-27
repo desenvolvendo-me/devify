@@ -88,5 +88,32 @@ if Rails.env.development?
   )
 
 
+
+ProjectSimulation.create!(
+  [
+    {
+      title: 'Desenvolvimento de Aplicação Web com Ruby on Rails',
+      description: 'Crie uma aplicação completa utilizando Ruby on Rails, abrangendo desde a configuração do ambiente até a implementação de funcionalidades complexas.',
+      objectives: 'Aprender conceitos fundamentais do Rails, MVC, ActiveRecord, e boas práticas de desenvolvimento.',
+      tools: 'Ruby, Rails, PostgreSQL, Bootstrap',
+      expected_results: 'Uma aplicação web funcional com autenticação, autorização, e CRUDs básicos.'
+    },
+    {
+      title: 'API RESTful com Node.js e Express',
+      description: 'Desenvolva uma API RESTful utilizando Node.js e Express, integrando com um banco de dados MongoDB.',
+      objectives: 'Entender como construir APIs com Node.js, lidar com requisições HTTP, e realizar operações de CRUD.',
+      tools: 'Node.js, Express, MongoDB, Postman',
+      expected_results: 'Uma API RESTful funcional com endpoints para CRUD de recursos e documentação no Postman.'
+    },
+    {
+      title: 'Aplicação de Machine Learning com Python',
+      description: 'Implemente um modelo de machine learning utilizando Python e bibliotecas como scikit-learn e pandas.',
+      objectives: 'Aprender os fundamentos de machine learning, pré-processamento de dados, e avaliação de modelos.',
+      tools: 'Python, scikit-learn, pandas, Jupyter Notebook',
+      expected_results: 'Um notebook Jupyter contendo todo o processo de análise de dados, treinamento do modelo e avaliação.'
+    }
+  ]
+)
+
   StudentProgressSeeder.student_progress_seed
 end
