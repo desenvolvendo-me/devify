@@ -21,10 +21,16 @@
   </div>
 </div>
 <div class="container  mx-auto max-w-screen-lg">
-  <div class="flex justify-between mt-4 mb-4">
-    <h2 class="text-3xl"><%= t 'manager.home.index.title' %></h2>
+  <div class="mt-4 mb-4">
+    <div class="flex justify-between">
+      <h2 class="text-3xl mb-4"><%= t 'manager.home.index.title' %></h2>
+      <div class="text-center mb-4 rounded-md bg-white p-6 dark:bg-slate-800 dark:text-white border border-slate-300/70 dark:border-slate-600/70">
+        <span class="text-xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight">Nível</span>
+        <span class="prose prose-slate dark:prose-invert mt-2 mb-4"><%= @level %></span>
+      </div>
+    </div>
     <%= form_tag(manager_dashboard_path, method: :get) do %>
-      <div class="flex">
+      <div class="flex justify-between mb-4">
         <div class="mr-7">
           <label for="mark" class="form-label"><%= t 'manager.home.index.filter_1' %></label>
           <%= select_tag :mark, options_for_select(@marks, params[:mark]), class: "form-select", include_blank: true %>
