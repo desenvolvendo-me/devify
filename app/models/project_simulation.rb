@@ -3,9 +3,9 @@
 # Table name: project_simulations
 #
 #  id               :bigint           not null, primary key
-#  complexity       :integer
+#  complexity       :string
 #  description      :text
-#  difficulty       :integer
+#  difficulty       :string
 #  expected_results :text
 #  objectives       :text
 #  title            :string
@@ -16,9 +16,9 @@
 class ProjectSimulation < ApplicationRecord
   has_and_belongs_to_many :users
 
-  enum difficulty: { easy: 0, medium: 1, hard: 2 }, _prefix: :difficulty
-  enum complexity: { low: 0, medium: 1, high: 2 }, _prefix: :complexity
+  DIFFICULTIES = %w[easy medium hard].freeze
+  COMPLEXITIES = %w[low medium high].freeze
 
-  validates :difficulty, presence: true, inclusion: { in: difficulties.keys }
-  validates :complexity, presence: true, inclusion: { in: complexities.keys }
+  validates :difficulty, presence: true, inclusion: { in: DIFFICULTIES }
+  validates :complexity, presence: true, inclusion: { in: COMPLEXITIES }
 end

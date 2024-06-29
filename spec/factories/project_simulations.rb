@@ -3,9 +3,9 @@
 # Table name: project_simulations
 #
 #  id               :bigint           not null, primary key
-#  complexity       :integer
+#  complexity       :string
 #  description      :text
-#  difficulty       :integer
+#  difficulty       :string
 #  expected_results :text
 #  objectives       :text
 #  title            :string
@@ -20,8 +20,8 @@ FactoryBot.define do
     objectives { FFaker::Lorem.paragraph }
     tools { FFaker::Lorem.paragraph }
     expected_results { FFaker::Lorem.paragraph }
-    difficulty { :easy }
-    complexity { :low }
+    difficulty { 'easy' }
+    complexity { 'low' }
   end
 end
 
