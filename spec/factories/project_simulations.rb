@@ -20,7 +20,8 @@ FactoryBot.define do
     objectives { FFaker::Lorem.paragraph }
     tools { FFaker::Lorem.paragraph }
     expected_results { FFaker::Lorem.paragraph }
-
+    difficulty { :easy }
+    complexity { :low }
   end
 end
 

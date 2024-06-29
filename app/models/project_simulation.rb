@@ -18,4 +18,7 @@ class ProjectSimulation < ApplicationRecord
 
   enum difficulty: { easy: 0, medium: 1, hard: 2 }, _prefix: :difficulty
   enum complexity: { low: 0, medium: 1, high: 2 }, _prefix: :complexity
+
+  validates :difficulty, presence: true, inclusion: { in: difficulties.keys }
+  validates :complexity, presence: true, inclusion: { in: complexities.keys }
 end
