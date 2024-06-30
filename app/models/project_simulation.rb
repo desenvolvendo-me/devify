@@ -16,8 +16,8 @@
 class ProjectSimulation < ApplicationRecord
   has_and_belongs_to_many :users
 
-  DIFFICULTIES = %w[easy medium hard].freeze
-  COMPLEXITIES = %w[low medium high].freeze
+  DIFFICULTIES = %w[Fácil Média Difícil].freeze
+  COMPLEXITIES = %w[Baixa Média Alta].freeze
 
   validates :difficulty, presence: true, inclusion: { in: DIFFICULTIES }
   validates :complexity, presence: true, inclusion: { in: COMPLEXITIES }
