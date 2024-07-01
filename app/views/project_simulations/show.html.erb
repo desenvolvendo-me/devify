@@ -25,6 +25,16 @@
         <p class="text-gray-700 dark:text-gray-300"><%= @project_simulation.expected_results %></p>
       </div>
 
+      <div class="mb-4">
+        <h2 class="text-xl font-bold text-gray-800 dark:text-gray-200"><%= t('.difficulty') %></h2>
+        <p class="text-gray-700 dark:text-gray-300"><%= @project_simulation.difficulty %></p>
+      </div>
+
+      <div class="mb-4">
+        <h2 class="text-xl font-bold text-gray-800 dark:text-gray-200"><%= t('.complexity') %></h2>
+        <p class="text-gray-700 dark:text-gray-300"><%= @project_simulation.complexity %></p>
+      </div>
+
       <%= form_with url: project_simulations_path, method: :post, local: true do |form| %>
         <%= form.hidden_field :project_id, value: @project_simulation.id %>
         <%= form.submit t('.start'), class: 'btn btn-primary' %>

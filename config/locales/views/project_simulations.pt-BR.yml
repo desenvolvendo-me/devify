@@ -9,5 +9,7 @@ pt-BR:
       goals: 'Objetivos'
       tools: 'Ferramentas Necessárias'
       results: 'Resultados Esperados'
+      difficulty: "Dificuldade"
+      complexity: "Complexidade"
       start: 'Iniciar Projeto'
       to_go_back: 'Voltar'
