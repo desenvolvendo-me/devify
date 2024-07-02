@@ -1,3 +1,4 @@
+# db/seeds.rb
 if Rails.env.development?
   AdminUser.create!(email: 'admin@mail.com', password: '000000', password_confirmation: '000000')
 
@@ -9,31 +10,30 @@ if Rails.env.development?
   client_2 = Client.create!(document: '66778473061', user: user_2)
   client_3 = Client.create!(document: '66778473061', user: user_3)
 
-  student_profile_1 = StudentProfile.create!(user: user_1, main_language: "JavaScript" ,
-                                             main_framework: "React" , track: "Front-End",
-                                             github: "https://github.com/user1" , wakatime:"https://wakatime.com/@user1",
-                                             linkedin: "https://linkedin.com/in/user1", instagram: "https://instagram.com/user1" ,
+  student_profile_1 = StudentProfile.create!(user: user_1, main_language: "JavaScript",
+                                             main_framework: "React", track: "Front-End",
+                                             github: "https://github.com/user1", wakatime: "https://wakatime.com/@user1",
+                                             linkedin: "https://linkedin.com/in/user1", instagram: "https://instagram.com/user1",
                                              technologies: %w[HTML CSS JavaScript], most_studied_language: ["JavaScript"],
-                                             study_duration:"+ou- 6 meses", web_framework_studied: ["React"],
+                                             study_duration: "+ou- 6 meses", web_framework_studied: ["React"],
                                              web_framework_study_duration: "+ou- 6 meses",
-                                             communication_preference: 7, exposure_preference: 5 )
-  student_profile_2 = StudentProfile.create!(user: user_2, main_language: "Ruby" ,
-                                             main_framework: "Rails" , track: "FullStack Monolito",
-                                             github: "https://github.com/user2" , wakatime:"https://wakatime.com/@user2",
-                                             linkedin: "https://linkedin.com/in/user2", instagram: "https://instagram.com/user2" ,
+                                             communication_preference: 7, exposure_preference: 5)
+  student_profile_2 = StudentProfile.create!(user: user_2, main_language: "Ruby",
+                                             main_framework: "Rails", track: "FullStack Monolito",
+                                             github: "https://github.com/user2", wakatime: "https://wakatime.com/@user2",
+                                             linkedin: "https://linkedin.com/in/user2", instagram: "https://instagram.com/user2",
                                              technologies: ["HTML CSS JavaScript", "Git e Github"], most_studied_language: ["JavaScript"],
-                                             study_duration:"+ou- 6 meses", web_framework_studied: %w[Rails React],
+                                             study_duration: "+ou- 6 meses", web_framework_studied: %w[Rails React],
                                              web_framework_study_duration: "+ou- 6 meses",
-                                             communication_preference: 8, exposure_preference: 2 )
-  student_profile_3 = StudentProfile.create!(user: user_3, main_language: "Java" ,
-                                             main_framework: "Spring" , track: "FullStack Monolito",
-                                             github: "https://github.com/user2" , wakatime:"https://wakatime.com/@user2",
-                                             linkedin: "https://linkedin.com/in/user2", instagram: "https://instagram.com/user2" ,
+                                             communication_preference: 8, exposure_preference: 2)
+  student_profile_3 = StudentProfile.create!(user: user_3, main_language: "Java",
+                                             main_framework: "Spring", track: "FullStack Monolito",
+                                             github: "https://github.com/user2", wakatime: "https://wakatime.com/@user2",
+                                             linkedin: "https://linkedin.com/in/user2", instagram: "https://instagram.com/user2",
                                              technologies: ["Banco de Dados", "Linguagem de Programação"], most_studied_language: %w[Spring Hibernate],
-                                             study_duration:"+ou- 6 meses", web_framework_studied: %w[Rails React],
+                                             study_duration: "+ou- 6 meses", web_framework_studied: %w[Rails React],
                                              web_framework_study_duration: "+ou- 6 meses",
-                                             communication_preference: 8, exposure_preference: 2 )
-
+                                             communication_preference: 8, exposure_preference: 2)
 
   user_1.avatar.attach(io: File.open(Rails.root.join('spec', 'support', 'images', 'avatar-1.jpg')), filename: 'avatar-1.jpg', content_type: 'image/jpg')
 
@@ -87,33 +87,37 @@ if Rails.env.development?
     goal: goal_for_user_2
   )
 
-
-
-ProjectSimulation.create!(
-  [
-    {
-      title: 'Desenvolvimento de Aplicação Web com Ruby on Rails',
-      description: 'Crie uma aplicação completa utilizando Ruby on Rails, abrangendo desde a configuração do ambiente até a implementação de funcionalidades complexas.',
-      objectives: 'Aprender conceitos fundamentais do Rails, MVC, ActiveRecord, e boas práticas de desenvolvimento.',
-      tools: 'Ruby, Rails, PostgreSQL, Bootstrap',
-      expected_results: 'Uma aplicação web funcional com autenticação, autorização, e CRUDs básicos.'
-    },
-    {
-      title: 'API RESTful com Node.js e Express',
-      description: 'Desenvolva uma API RESTful utilizando Node.js e Express, integrando com um banco de dados MongoDB.',
-      objectives: 'Entender como construir APIs com Node.js, lidar com requisições HTTP, e realizar operações de CRUD.',
-      tools: 'Node.js, Express, MongoDB, Postman',
-      expected_results: 'Uma API RESTful funcional com endpoints para CRUD de recursos e documentação no Postman.'
-    },
-    {
-      title: 'Aplicação de Machine Learning com Python',
-      description: 'Implemente um modelo de machine learning utilizando Python e bibliotecas como scikit-learn e pandas.',
-      objectives: 'Aprender os fundamentos de machine learning, pré-processamento de dados, e avaliação de modelos.',
-      tools: 'Python, scikit-learn, pandas, Jupyter Notebook',
-      expected_results: 'Um notebook Jupyter contendo todo o processo de análise de dados, treinamento do modelo e avaliação.'
-    }
-  ]
-)
+  ProjectSimulation.create!(
+    [
+      {
+        title: 'Desenvolvimento de Aplicação Web com Ruby on Rails',
+        description: 'Crie uma aplicação completa utilizando Ruby on Rails, abrangendo desde a configuração do ambiente até a implementação de funcionalidades complexas.',
+        objectives: 'Aprender conceitos fundamentais do Rails, MVC, ActiveRecord, e boas práticas de desenvolvimento.',
+        tools: 'Ruby, Rails, PostgreSQL, Bootstrap',
+        expected_results: 'Uma aplicação web funcional com autenticação, autorização, e CRUDs básicos.',
+        difficulty: 'Média',
+        complexity: 'Alta'
+      },
+      {
+        title: 'API RESTful com Node.js e Express',
+        description: 'Desenvolva uma API RESTful utilizando Node.js e Express, integrando com um banco de dados MongoDB.',
+        objectives: 'Entender como construir APIs com Node.js, lidar com requisições HTTP, e realizar operações de CRUD.',
+        tools: 'Node.js, Express, MongoDB, Postman',
+        expected_results: 'Uma API RESTful funcional com endpoints para CRUD de recursos e documentação no Postman.',
+        difficulty: 'Alta',
+        complexity: 'Média'
+      },
+      {
+        title: 'Aplicação de Machine Learning com Python',
+        description: 'Implemente um modelo de machine learning utilizando Python e bibliotecas como scikit-learn e pandas.',
+        objectives: 'Aprender os fundamentos de machine learning, pré-processamento de dados, e avaliação de modelos.',
+        tools: 'Python, scikit-learn, pandas, Jupyter Notebook',
+        expected_results: 'Um notebook Jupyter contendo todo o processo de análise de dados, treinamento do modelo e avaliação.',
+        difficulty: 'Alta',
+        complexity: 'Alta'
+      }
+    ]
+  )
 
   StudentProgressSeeder.student_progress_seed
 end
