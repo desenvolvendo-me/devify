@@ -1,0 +1,134 @@
+<div data-controller="modal" id="modal-profile">
+  <button type="button" data-action="click->modal#open" class="btn btn-primary" tabindex="0">
+    Regras
+  </button>
+
+  <div aria-labelledby="modal" aria-modal="true" data-action="keyup@window->modal#closeWithEsc" data-modal-target="container" class="hidden fixed inset-0 z-50 overflow-y-auto md:w-[500px]" role="dialog">
+    <div class="relative flex items-center justify-center">
+      <div data-modal-target="content"
+           data-transition-enter-active="transition ease-out duration-300"
+           data-transition-enter-from="transform opacity-0 scale-95"
+           data-transition-enter-to="transform opacity-100 scale-100"
+           data-transition-leave-active="transition ease-in duration-300"
+           data-transition-leave-from="transform opacity-100 scale-100"
+           data-transition-leave-to="transform opacity-0 scale-95"
+           class="hidden rounded shadow-xl max-w-lg bg-white m-1 p-8 prose origin-bottom mx-auto dark:bg-slate-700 dark:text-slate-200">
+
+        <h2 id="modal-title" class="dark:text-slate-100">Regras de evolução</h2>
+
+        <div class="section-modal">
+          <h2>1. Experiência em Programação</h2>
+          <ul>
+            <li>
+              <h3>Horas de prática</h3>
+              <p>O tempo total dedicado à programação.</p>
+            </li>
+            <li>
+              <h3>Diversidade de linguagens</h3>
+              <p>O número e variedade de linguagens de programação conhecidas.</p>
+            </li>
+            <li>
+              <h3>Profundidade do conhecimento</h3>
+              <p>O nível de compreensão de conceitos avançados e práticas de programação.</p>
+            </li>
+          </ul>
+          <div class="vertical-rule"></div>
+        </div>
+
+        <div class="section-modal">
+          <h2>2. Aulas Assistidas</h2>
+          <ul>
+            <li>
+              <h3>Teóricas</h3>
+              <p>Focadas em conceitos e fundamentos.</p>
+            </li>
+            <li>
+              <h3>Práticas</h3>
+              <p>Envolvendo exercícios e aplicação de conceitos.</p>
+            </li>
+            <li>
+              <h3>Projetos orientados</h3>
+              <p>Aulas que guiam o aluno na criação de projetos práticos.</p>
+            </li>
+          </ul>
+          <div class="vertical-rule"></div>
+        </div>
+
+        <div class="section-modal">
+          <h2>3. Projetos Finalizados</h2>
+          <p>Os projetos são classificados de acordo com a dificuldade e complexidade.</p>
+
+          <h3>Dificuldades</h3>
+          <ul>
+            <li>
+              <h3>Fácil</h3>
+              <p>Projetos que introduzem conceitos básicos e são ideais para iniciantes.</p>
+            </li>
+            <li>
+              <h3>Média</h3>
+              <p>Projetos que requerem um entendimento mais profundo e habilidades intermediárias.</p>
+            </li>
+            <li>
+              <h3>Difícil</h3>
+              <p>Projetos que desafiam mesmo programadores experientes e requerem habilidades avançadas.</p>
+            </li>
+          </ul>
+
+          <h3>Complexidades</h3>
+          <ul>
+            <li>
+              <h3>Baixa</h3>
+              <p>Projetos simples dentro do seu nível de dificuldade, com poucos componentes ou requisitos.</p>
+            </li>
+            <li>
+              <h3>Média</h3>
+              <p>Projetos com uma complexidade intermediária, envolvendo múltiplos componentes ou funcionalidades.</p>
+            </li>
+            <li>
+              <h3>Alta</h3>
+              <p>Projetos complexos dentro do seu nível de dificuldade, possivelmente incluindo integrações, otimizações e funcionalidades avançadas.</p>
+            </li>
+          </ul>
+          <div class="vertical-rule"></div>
+        </div>
+
+        <div class="section-modal">
+          <h2>Exemplo de Evolução</h2>
+          <ul>
+            <li>
+              <h3>Iniciante</h3>
+              <ul>
+                <li>Experiência em Programação: Poucas horas de prática, conhecimento básico de uma linguagem de programação.</li>
+                <li>Aulas Assistidas: Aulas teóricas introdutórias e algumas aulas práticas.</li>
+                <li>Projetos Finalizados: Projetos de dificuldade fácil com complexidade baixa.</li>
+              </ul>
+            </li>
+            <li>
+              <h3>Intermediário</h3>
+              <ul>
+                <li>Experiência em Programação: Várias horas de prática, conhecimento de múltiplas linguagens e conceitos intermediários.</li>
+                <li>Aulas Assistidas: Aulas teóricas mais avançadas, aulas práticas regulares, e alguns projetos orientados.</li>
+                <li>Projetos Finalizados: Projetos de dificuldade média com complexidades variadas (baixa, média e alta).</li>
+              </ul>
+            </li>
+            <li>
+              <h3>Avançado</h3>
+              <ul>
+                <li>Experiência em Programação: Muitas horas de prática, conhecimento profundo de várias linguagens e conceitos avançados.</li>
+                <li>Aulas Assistidas: Aulas teóricas avançadas, aulas práticas frequentes, e vários projetos orientados.</li>
+                <li>Projetos Finalizados: Projetos de dificuldade difícil com complexidades variadas (baixa, média e alta).</li>
+              </ul>
+            </li>
+          </ul>
+          <div class="vertical-rule"></div>
+        </div>
+
+        <div class="flex justify-end items-center flex-wrap space-x-4">
+          <button class="btn btn-primary" data-action="click->modal#close">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= render "modal_style" %>
