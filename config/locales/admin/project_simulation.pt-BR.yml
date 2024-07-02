@@ -1,0 +1,13 @@
+pt-BR:
+  active_admin:
+    resources:
+      project_simulation:
+        name: "Simulação de Projeto"
+        menu:
+          label: "Simulações de Projetos"
+    actions:
+      new: "Nova %{resource_name}"
+      edit: "Editar %{resource_name}"
+      destroy: "Excluir %{resource_name}"
+    filters:
+      title: "Filtrar %{resource_name}"

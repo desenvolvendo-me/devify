@@ -1,15 +1,36 @@
 pt-BR:
-  project_simulations:
-    index:
-      available_projects: 'Projetos Simulados Disponíveis'
-      details: 'Ver Detalhes'
-      start: 'Iniciar Projeto'
-    show:
-      description: 'Descrição'
-      goals: 'Objetivos'
-      tools: 'Ferramentas Necessárias'
-      results: 'Resultados Esperados'
+  activerecord:
+    models:
+      project_simulation: "Simulação de Projeto"
+    attributes:
+      project_simulation:
+        title: "Título"
+        description: "Descrição"
+        objectives: "Objetivos"
+        tools: "Ferramentas"
+        expected_results: "Resultados Esperados"
+        difficulty: "Dificuldade"
+        complexity: "Complexidade"
+
+  active_admin:
+    resources:
+      project_simulation:
+        name: "Simulação de Projeto"
+        menu:
+          label: "Simulações de Projetos"
+    actions:
+      new: "Nova %{resource_name}"
+      edit: "Editar %{resource_name}"
+      destroy: "Excluir %{resource_name}"
+      view: "Visualizar"
+      back: "Voltar"
+    filters:
+      title: "Filtrar %{resource_name}"
+    labels:
+      title: "Título"
+      description: "Descrição"
+      objectives: "Objetivos"
+      tools: "Ferramentas"
+      expected_results: "Resultados Esperados"
       difficulty: "Dificuldade"
       complexity: "Complexidade"
-      start: 'Iniciar Projeto'
-      to_go_back: 'Voltar'
