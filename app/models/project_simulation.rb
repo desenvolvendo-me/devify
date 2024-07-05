@@ -16,9 +16,18 @@
 class ProjectSimulation < ApplicationRecord
   has_and_belongs_to_many :users
 
-  DIFFICULTIES = %w[Fácil Média Difícil].freeze
-  COMPLEXITIES = %w[Baixa Média Alta].freeze
+  enum difficulty: {
+    easy: "Facil",
+    medium: "Medio",
+    hard: "Dificil"
+  }, _suffix: true
 
-  validates :difficulty, presence: true, inclusion: { in: DIFFICULTIES }
-  validates :complexity, presence: true, inclusion: { in: COMPLEXITIES }
+  enum complexity: {
+    low: "Baixa",
+    medium: "Media",
+    high: "Alta"
+  }, _suffix: true
+
+  validates :difficulty, presence: true, inclusion: { in: difficulties.keys }
+  validates :complexity, presence: true, inclusion: { in: complexities.keys }
 end

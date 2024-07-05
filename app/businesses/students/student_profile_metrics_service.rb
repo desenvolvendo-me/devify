@@ -12,8 +12,10 @@ module Students
     end
 
     def language_mastery
-      study_duration_points = parse_study_duration(@student_profile.study_duration, @student_profile.study_duration_details)
-      framework_study_duration_points = parse_study_duration(@student_profile.web_framework_study_duration, @student_profile.web_framework_study_duration_details)
+      study_duration_points = parse_study_duration(
+        @student_profile.study_duration, @student_profile.study_duration_details)
+      framework_study_duration_points = parse_study_duration(
+        @student_profile.web_framework_study_duration, @student_profile.web_framework_study_duration_details)
       study_duration_points + framework_study_duration_points
     end
 
@@ -32,21 +34,20 @@ module Students
     private
 
     def parse_study_duration(duration, other_details)
-      points = case duration
-               when "Nunca"
-                 0
-               when "+ou- 3 meses"
-                 3
-               when "+ou- 6 meses"
-                 6
-               when "+ou- 12 meses"
-                 12
-               when "Outro"
-                 other_details.to_i
-               else
-                 0
-               end
-      points
+      case duration
+      when 'Nunca'
+        0
+      when '+ou- 3 meses'
+        3
+      when '+ou- 6 meses'
+        6
+      when '+ou- 12 meses'
+        12
+      when 'Outro'
+        other_details.to_i
+      else
+        0
+      end
     end
 
     def determine_level(total_points)
