@@ -13,21 +13,28 @@
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #
+# app/models/project_simulation.rb
+
 class ProjectSimulation < ApplicationRecord
   has_and_belongs_to_many :users
+  has_and_belongs_to_many :student_profiles
 
-  enum difficulty: {
+  DIFFICULTIES = {
     easy: "Facil",
     medium: "Medio",
     hard: "Dificil"
-  }, _suffix: true
+  }
 
-  enum complexity: {
+  COMPLEXITIES = {
     low: "Baixa",
     medium: "Media",
     high: "Alta"
-  }, _suffix: true
+  }
+
+  enum difficulty: DIFFICULTIES, _suffix: true
+  enum complexity: COMPLEXITIES, _suffix: true
 
   validates :difficulty, presence: true, inclusion: { in: difficulties.keys }
   validates :complexity, presence: true, inclusion: { in: complexities.keys }
 end
+

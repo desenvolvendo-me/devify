@@ -15,7 +15,7 @@ class ProjectSimulationsController < ApplicationController
 
     if result[:success]
       respond_to do |format|
-        format.html { redirect_to project_simulations_path, notice: 'Project started successfully.' }
+        format.html { redirect_to project_simulations_path, notice: 'Projeto iniciado com sucesso.' }
         format.json { render :show, status: :created, location: result[:project_simulation] }
       end
     else
