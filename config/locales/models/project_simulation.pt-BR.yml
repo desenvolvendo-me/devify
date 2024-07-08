@@ -1,0 +1,27 @@
+pt-BR:
+  activerecord:
+    models:
+      project_simulation: "Simulação de Projeto"
+    attributes:
+      project_simulation:
+        title: "Título"
+        description: "Descrição"
+        objectives: "Objetivos"
+        tools: "Ferramentas"
+        expected_results: "Resultados Esperados"
+        difficulty: "Dificuldade"
+        difficulties:
+          easy: "Fácil"
+          medium: "Médio"
+          hard: "Difícil"
+        complexity: "Complexidade"
+        complexities:
+          low: "Baixa"
+          medium: "Média"
+          high: "Alta"
+  active_admin:
+    resources:
+      project_simulation:
+        menu:
+          label: "Simulações de Projetos"
+        name: "Simulação de Projeto"

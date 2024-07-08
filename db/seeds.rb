@@ -1,4 +1,5 @@
 # db/seeds.rb
+
 if Rails.env.development?
   AdminUser.create!(email: 'admin@mail.com', password: '000000', password_confirmation: '000000')
 
@@ -105,7 +106,7 @@ if Rails.env.development?
         tools: 'Node.js, Express, MongoDB, Postman',
         expected_results: 'Uma API RESTful funcional com endpoints para CRUD de recursos e documentação no Postman.',
         difficulty:  ProjectSimulation.difficulties[:hard],
-        complexity: ProjectSimulation.difficulties[:medium]
+        complexity: ProjectSimulation.complexities[:medium]
       },
       {
         title: 'Aplicação de Machine Learning com Python',
@@ -114,7 +115,7 @@ if Rails.env.development?
         tools: 'Python, scikit-learn, pandas, Jupyter Notebook',
         expected_results: 'Um notebook Jupyter contendo todo o processo de análise de dados, treinamento do modelo e avaliação.',
         difficulty: ProjectSimulation.difficulties[:hard],
-        complexity: ProjectSimulation.difficulties[:high]
+        complexity: ProjectSimulation.complexities[:high]
       }
     ]
   )
