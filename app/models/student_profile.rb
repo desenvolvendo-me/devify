@@ -38,6 +38,7 @@
 class StudentProfile < ApplicationRecord
   belongs_to :user
   belongs_to :client, optional: true
+  has_and_belongs_to_many :project_simulations
 
   validates :github, :wakatime, :linkedin, :instagram, allow_blank: true, format: { with: URI::DEFAULT_PARSER.make_regexp(%w[http https]), message: "only allows valid URLs" }
 

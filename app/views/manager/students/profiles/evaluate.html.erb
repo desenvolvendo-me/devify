@@ -64,14 +64,14 @@
 
           <p><%= f.radio_button :study_duration, "Outro", class: "form-input-radio" %>
             <%= f.label :study_duration_other, "Outro:", class: "ml-2" %></p>
-          <%= f.text_field :study_duration_details, class: "form-input" %>
+          <%= f.number_field :study_duration_details, class: "form-input" %>
         </div>
       </div>
 
       <div class="col-span-2">
         <%= f.label :web_framework_studied, "What web framework in your programming language did you study?", class: "form-label text-xl" %>
         <div class="form-group flex flex-col space-y-2">
-          <% frameworks = ["Rails", "Django", "Laravel", "Spring", "Express.js", "Outro:"] %>
+          <% frameworks = %w[Rails Django Laravel Spring React Outro:] %>
           <% frameworks.each do |framework| %>
             <div>
               <%= check_box_tag 'student_profile[web_framework_studied][]', framework, @student_profile.web_framework_studied.include?(framework), class: "form-input-checkbox" %>
@@ -99,7 +99,7 @@
 
           <p> <%= f.radio_button :web_framework_study_duration, "Outro", class: "form-input-radio" %>
             <%= f.label :web_framework_study_duration_other, "Outro:", class: "ml-2" %></p>
-          <%= f.text_field :web_framework_study_duration_details, class: "form-input" %>
+          <%= f.number_field :web_framework_study_duration_details, class: "form-input" %>
         </div>
       </div>
 

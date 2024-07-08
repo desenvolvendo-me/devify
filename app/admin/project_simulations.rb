@@ -10,8 +10,8 @@ ActiveAdmin.register ProjectSimulation do
       f.input :objectives, label: I18n.t('activerecord.attributes.project_simulation.objectives')
       f.input :tools, label: I18n.t('activerecord.attributes.project_simulation.tools')
       f.input :expected_results, label: I18n.t('activerecord.attributes.project_simulation.expected_results')
-      f.input :difficulty, as: :select, collection: ProjectSimulation::DIFFICULTIES, prompt: "Selecione", label: I18n.t('activerecord.attributes.project_simulation.difficulty')
-      f.input :complexity, as: :select, collection: ProjectSimulation::COMPLEXITIES, prompt: "Selecione", label: I18n.t('activerecord.attributes.project_simulation.complexity')
+      f.input :difficulty, as: :select, collection: ProjectSimulation.difficulties.keys.map { |k| [I18n.t("activerecord.attributes.project_simulation.difficulties.#{k}"), k] }, prompt: I18n.t('helpers.select.prompt'), label: I18n.t('activerecord.attributes.project_simulation.difficulty')
+      f.input :complexity, as: :select, collection: ProjectSimulation.complexities.keys.map { |k| [I18n.t("activerecord.attributes.project_simulation.complexities.#{k}"), k] }, prompt: I18n.t('helpers.select.prompt'), label: I18n.t('activerecord.attributes.project_simulation.complexity')
     end
     f.actions
   end
@@ -23,8 +23,8 @@ ActiveAdmin.register ProjectSimulation do
       row(I18n.t('activerecord.attributes.project_simulation.objectives')) { |project| project.objectives }
       row(I18n.t('activerecord.attributes.project_simulation.tools')) { |project| project.tools }
       row(I18n.t('activerecord.attributes.project_simulation.expected_results')) { |project| project.expected_results }
-      row(I18n.t('activerecord.attributes.project_simulation.difficulty')) { |project| project.difficulty }
-      row(I18n.t('activerecord.attributes.project_simulation.complexity')) { |project| project.complexity }
+      row(I18n.t('activerecord.attributes.project_simulation.difficulty')) { |project| I18n.t("activerecord.attributes.project_simulation.difficulties.#{project.difficulty}") }
+      row(I18n.t('activerecord.attributes.project_simulation.complexity')) { |project| I18n.t("activerecord.attributes.project_simulation.complexities.#{project.complexity}") }
     end
   end
 
@@ -32,12 +32,12 @@ ActiveAdmin.register ProjectSimulation do
     selectable_column
     id_column
     column I18n.t('activerecord.attributes.project_simulation.title'), :title
-    column I18n.t('activerecord.attributes.project_simulation.difficulty'), :difficulty
-    column I18n.t('activerecord.attributes.project_simulation.complexity'), :complexity
+    column I18n.t('activerecord.attributes.project_simulation.difficulty'), &:difficulty
+    column I18n.t('activerecord.attributes.project_simulation.complexity'), &:complexity
     actions
   end
 
   filter :title, label: I18n.t('activerecord.attributes.project_simulation.title')
-  filter :difficulty, as: :select, collection: ProjectSimulation::DIFFICULTIES, prompt: "Selecione", label: I18n.t('activerecord.attributes.project_simulation.difficulty')
-  filter :complexity, as: :select, collection: ProjectSimulation::COMPLEXITIES, prompt: "Selecione", label: I18n.t('activerecord.attributes.project_simulation.complexity')
+  filter :difficulty, as: :select, collection: ProjectSimulation.difficulties.keys.map { |k| [I18n.t("activerecord.attributes.project_simulation.difficulties.#{k}"), k] }, prompt: I18n.t('helpers.select.prompt'), label: I18n.t('activerecord.attributes.project_simulation.difficulty')
+  filter :complexity, as: :select, collection: ProjectSimulation.complexities.keys.map { |k| [I18n.t("activerecord.attributes.project_simulation.complexities.#{k}"), k] }, prompt: I18n.t('helpers.select.prompt'), label: I18n.t('activerecord.attributes.project_simulation.complexity')
 end
