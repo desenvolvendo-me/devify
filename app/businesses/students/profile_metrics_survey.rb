@@ -46,14 +46,14 @@ module Students
     private
 
     def study_duration_weights(duration)
-      case duration
-      when 'Nunca'
+      case duration.to_sym
+      when :never
         0
-      when '+ou- 3 meses'
+      when :three_months
         3
-      when '+ou- 6 meses'
+      when :six_months
         6
-      when '+ou- 12 meses'
+      when :twelve_months
         9
       else
         0

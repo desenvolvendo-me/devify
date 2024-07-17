@@ -39,12 +39,14 @@ class StudentProfile < ApplicationRecord
 
   validates :github, :wakatime, :linkedin, :instagram, allow_blank: true, format: { with: URI::DEFAULT_PARSER.make_regexp(%w[http https]), message: "only allows valid URLs" }
 
-  enum study_duration: {
-    "Nunca" => "Nunca",
-    "+ou- 3 meses" => "+ou- 3 meses",
-    "+ou- 6 meses" => "+ou- 6 meses",
-    "+ou- 12 meses" => "+ou- 12 meses"
-  }, _prefix: true
+  enum duration: {
+    never: 'never',
+    three_months: 'Approximately 3 months',
+    six_months: 'Approximately 6 months',
+    twelve_months: 'Approximately 3 months'
+  }
 
-
+  def self.duration_options
+    durations.keys.map { |key| [I18n.t("views.manager.students.enums.duration.#{key}"), key] }
+  end
 end
