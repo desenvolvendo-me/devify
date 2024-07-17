@@ -1,5 +1,5 @@
 module Students
-  class ProfileMetricsService
+  class ProfileMetrics
     DIFFICULTY_POINTS = {
       'easy' => 1,
       'medium' => 2,
@@ -21,7 +21,9 @@ module Students
         DIFFICULTY_POINTS[project.difficulty] + COMPLEXITY_POINTS[project.complexity]
       end
 
-      determine_level(total_points)
+      level = determine_level(total_points)
+      @student_profile.update(level_profile: level)
+      level
     end
 
     private

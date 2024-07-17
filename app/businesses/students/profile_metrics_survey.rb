@@ -1,44 +1,33 @@
 module Students
-  class StudentProfileMetricsService
+  class ProfileMetricsSurvey
     TECH_WEIGHTS = {
-      'Lógica de Programação' => 1,
-      'Git e Github' => 1,
-      'Html, Css e Javascript' => 2,
-      'Linguagem de Programação' => 2,
-      'Banco de Dados' => 3,
-      'Framework' => 3
-    }.freeze
+      "Lógica de Programação" => 1,
+      "Git e Github" => 1,
+      "Html, Css e Javascript" => 2,
+      "Linguagem de Programação" => 2,
+      "Banco de Dados" => 3,
+      "Framework" => 3
+    }
 
     QUESTION_WEIGHTS = {
       study_duration: 3,
-      web_framework_study_duration: 4,
       communication_preference: 2,
       exposure_preference: 3
-    }.freeze
+    }
 
     def initialize(student_profile)
       @student_profile = student_profile
     end
 
     def skills
-      tech_count = @student_profile.technologies.sum do |tech|
-        TECH_WEIGHTS[tech] || 0
-      end
-      framework_count = @student_profile.web_framework_studied.sum do |framework|
-        TECH_WEIGHTS[framework] || 0
-      end
-      other_tech_count = @student_profile.technology_other_details.count
-      tech_count + framework_count + other_tech_count
+      tech_count = @student_profile.technologies.sum { |tech| TECH_WEIGHTS[tech] || 0 }
+      framework_count = @student_profile.web_framework_studied.sum { |framework| TECH_WEIGHTS[framework] || 0 }
+      tech_count + framework_count
     end
 
     def language_mastery
-      study_duration_points = parse_study_duration(
-        @student_profile.study_duration, @student_profile.study_duration_details
-      ) * QUESTION_WEIGHTS[:study_duration]
-      framework_study_duration_points = parse_study_duration(
-        @student_profile.web_framework_study_duration, @student_profile.web_framework_study_duration_details
-      ) * QUESTION_WEIGHTS[:web_framework_study_duration]
-      study_duration_points + framework_study_duration_points
+      study_duration_points = study_duration_weights(@student_profile.study_duration) * QUESTION_WEIGHTS[:study_duration]
+      study_duration_points
     end
 
     def exposure
@@ -49,12 +38,14 @@ module Students
 
     def calculate_survey_level
       total_points = skills + language_mastery + exposure
-      determine_level(total_points)
+      level = determine_level(total_points)
+      @student_profile.update(level_profile_survey: level)
+      level
     end
 
     private
 
-    def parse_study_duration(duration, other_details)
+    def study_duration_weights(duration)
       case duration
       when 'Nunca'
         0
@@ -64,8 +55,6 @@ module Students
         6
       when '+ou- 12 meses'
         9
-      when 'Outro'
-        other_details.to_i
       else
         0
       end

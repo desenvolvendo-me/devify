@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Students::ProfileMetricsService, type: :service do
+RSpec.describe Students::ProfileMetrics, type: :service do
   let(:student_profile) { create(:student_profile) }
   let(:service) { described_class.new(student_profile) }
 

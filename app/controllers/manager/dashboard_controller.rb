@@ -19,10 +19,8 @@ module Manager
     end
 
     def set_level
-      @level_profile = ::Students::ProfileMetricsService
-                 .new(@user.student_profile).calculate_profile_level
-      @level_survey = ::Students::StudentProfileMetricsService
-                        .new(@user.student_profile).calculate_survey_level
+      @level_profile = @user.student_profile.level_profile
+      @level_survey = @user.student_profile.level_profile_survey
     end
 
     def set_user

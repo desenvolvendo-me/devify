@@ -9,13 +9,13 @@ module Manager
           redirect_to edit_manager_students_profile_path, notice: 'Please complete your profile.'
         end
 
-        survey_metrics_service = ::Students::StudentProfileMetricsService.new(@student_profile)
+        survey_metrics_service = ::Students::ProfileMetricsSurvey.new(@student_profile)
         @skills = survey_metrics_service.skills
         @language_mastery = survey_metrics_service.language_mastery
         @exposure = survey_metrics_service.exposure
         @survey_level = survey_metrics_service.calculate_survey_level
 
-        profile_metrics_service = ::Students::ProfileMetricsService.new(@student_profile)
+        profile_metrics_service = ::Students::ProfileMetrics.new(@student_profile)
         @profile_level = profile_metrics_service.calculate_profile_level
       end
 
@@ -24,7 +24,7 @@ module Manager
 
       def update
         user_attributes = user_params.reject { |k, v| v.blank? }
-        student_profile_attributes = ::Students::StudentProfileService.process_params(student_profile_params.reject { |k, v| v.blank? })
+        student_profile_attributes = student_profile_params.reject { |k, v| v.blank? }
 
         if current_user.update(user_attributes) && @student_profile.update(student_profile_attributes)
           redirect_to manager_students_profile_path, notice: 'Profile was successfully updated.'
@@ -37,7 +37,7 @@ module Manager
       end
 
       def submit_evaluation
-        student_profile_attributes = ::Students::StudentProfileService.process_params(student_profile_params.reject { |k, v| v.blank? })
+        student_profile_attributes = student_profile_params.reject { |k, v| v.blank? }
 
         if @student_profile.update(student_profile_attributes)
           redirect_to manager_students_profile_path, notice: 'Evaluation was successfully submitted.'
@@ -65,12 +65,9 @@ module Manager
           :github,
           :wakatime,
           :linkedin,
-          :technology_other_details,
-          :most_studied_language_other_details,
           :study_duration,
           :study_duration_details,
           :web_framework_study_duration,
-          :web_framework_study_duration_details,
           :communication_preference,
           :exposure_preference,
           technologies: [],
