@@ -1,0 +1,30 @@
+pt-BR:
+  views:
+    manager:
+      students:
+        profile_classification: "Classificação do Perfil"
+        survey_summary: "Resumo da Pesquisa"
+        level: "Nível"
+        technologies: "Tecnologias"
+        most_studied_language: "Linguagem mais estudada"
+        study_duration: "Duração do estudo"
+        web_framework_studied: "Framework Web estudado"
+        web_framework_study_duration: "Duração do estudo do framework web"
+        communication_preference: "Preferência de comunicação"
+        exposure_preference: "Preferência de exposição"
+        language_mastery: "Domínio da <br>Linguagem"
+        exposure: "Exposição"
+        language: "Linguagem"
+        framework: "Framework"
+        selected_stack: "Stack Selecionado"
+        enums:
+          duration:
+            never: "Nunca"
+            three_months: "Aproximadamente 3 meses"
+            six_months: "Aproximadamente 6 meses"
+            twelve_months: "Aproximadamente 12 meses"
+        buttons:
+          submit_evaluation: "Enviar Avaliação"
+          cancel: "Cancelar"
+          edit: "Editar"
+          evaluate_profile: "Avaliar Perfil"

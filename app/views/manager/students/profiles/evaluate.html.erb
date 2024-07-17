@@ -15,12 +15,12 @@
 
     <div class="grid grid-cols-1 sm:grid-cols-2 sm:gap-x-16 sm:gap-y-10 gap-6 items-center">
       <div class="col-span-2">
-        <%= f.label :instagram, "What is your instagram?", class: "form-label text-xl" %>
+        <%= f.label :instagram, t('views.manager.students.labels.instagram'), class: "form-label text-xl" %>
         <%= f.text_field :instagram, class: "form-input" %>
       </div>
 
       <div class="col-span-2">
-        <%= f.label :technologies, "What technologies have you taken a course?", class: "form-label text-xl" %>
+        <%= f.label :technologies, t('views.manager.students.labels.technologies'), class: "form-label text-xl" %>
         <div class="form-group flex flex-col space-y-2">
           <% options = ["Lógica de Programação", "Git e Github", "Html, Css e Javascript", "Banco de Dados", "Linguagem de Programação", "Framework Web"] %>
           <% options.each do |option| %>
@@ -33,7 +33,7 @@
       </div>
 
       <div class="col-span-2">
-        <%= f.label :most_studied_language, "Which programming language did you study the most?", class: "form-label text-xl" %>
+        <%= f.label :most_studied_language, t('views.manager.students.labels.most_studied_language'), class: "form-label text-xl" %>
         <div class="form-group flex flex-col space-y-2">
           <% languages = ["Javascript (Nodejs)", "Java", "Python", "PHP", "Ruby"] %>
           <% languages.each do |language| %>
@@ -46,19 +46,19 @@
       </div>
 
       <div class="col-span-1">
-        <%= f.label :study_duration, "How long did you study your language?", class: "form-label text-xl" %>
+        <%= f.label :study_duration, t('views.manager.students.labels.study_duration'), class: "form-label text-xl" %>
         <div class="form-group flex flex-col space-y-2">
-          <% StudentProfile.study_durations.keys.each do |duration| %>
-            <div>
-              <%= f.radio_button :study_duration, duration, class: "form-input-radio" %>
-              <%= f.label "study_duration_#{duration}", StudentProfile.study_durations[duration], class: "ml-2" %>
-            </div>
+          <% StudentProfile.duration_options.each do |label, value| %>
+            <p>
+              <%= f.radio_button :study_duration, value, class: "form-input-radio" %>
+              <%= f.label "study_duration_#{value}", label, class: "ml-2" %>
+            </p>
           <% end %>
         </div>
       </div>
 
       <div class="col-span-2">
-        <%= f.label :web_framework_studied, "What web framework in your programming language did you study?", class: "form-label text-xl" %>
+        <%= f.label :web_framework_studied, t('views.manager.students.labels.web_framework_studied'), class: "form-label text-xl" %>
         <div class="form-group flex flex-col space-y-2">
           <% frameworks = %w[Rails Django Laravel Spring React] %>
           <% frameworks.each do |framework| %>
@@ -71,19 +71,19 @@
       </div>
 
       <div class="col-span-1">
-        <%= f.label :web_framework_study_duration, "How long did you study the web framework?", class: "form-label text-xl" %>
+        <%= f.label :web_framework_study_duration, t('views.manager.students.labels.web_framework_study_duration'), class: "form-label text-xl" %>
         <div class="form-group flex flex-col space-y-2">
-          <% StudentProfile.study_durations.keys.each do |duration| %>
-            <div>
-              <%= f.radio_button :web_framework_study_duration, duration, class: "form-input-radio" %>
-              <%= f.label "web_framework_study_duration_#{duration}", StudentProfile.study_durations[duration], class: "ml-2" %>
-            </div>
+          <% StudentProfile.duration_options.each do |label, value| %>
+            <p>
+              <%= f.radio_button :web_framework_study_duration, value, class: "form-input-radio" %>
+              <%= f.label "web_framework_study_duration_#{value}", label, class: "ml-2" %>
+            </p>
           <% end %>
         </div>
       </div>
 
       <div class="col-span-2 text-center">
-        <%= f.label :communication_preference, "How much do you like talking to people?", class: "form-label block mb-4 text-xl" %>
+        <%= f.label :communication_preference, t('views.manager.students.labels.communication_preference'), class: "form-label block mb-4 text-xl" %>
         <div class="form-group flex justify-center space-x-4">
           <% (1..10).each do |i| %>
             <div class="flex flex-col items-center">
@@ -95,7 +95,7 @@
       </div>
 
       <div class="col-span-2 text-center">
-        <%= f.label :exposure_preference, "How much do you like to expose yourself?", class: "form-label block mb-4 text-xl" %>
+        <%= f.label :exposure_preference, t('views.manager.students.labels.exposure_preference'), class: "form-label block mb-4 text-xl" %>
         <div class="form-group flex justify-center space-x-4">
           <% (1..10).each do |i| %>
             <div class="flex flex-col items-center">
@@ -108,8 +108,8 @@
     </div>
 
     <div class="border-t py-6 mt-10 flex items-center space-x-4 dark:border-slate-600">
-      <%= f.submit "Submit Evaluation", class: "btn btn-primary" %>
-      <%= link_to "Cancel", manager_students_profile_path, class: "font-medium text-slate-600 hover:text-primary-600 text-sm px-2 py-2 dark:text-slate-400 dark:hover:text-primary-400" %>
+      <%= f.submit t('views.manager.students.buttons.submit_evaluation'), class: "btn btn-primary" %>
+      <%= link_to t('views.manager.students.buttons.cancel'), manager_students_profile_path, class: "font-medium text-slate-600 hover:text-primary-600 text-sm px-2 py-2 dark:text-slate-400 dark:hover:text-primary-400" %>
     </div>
   <% end %>
 </div>
