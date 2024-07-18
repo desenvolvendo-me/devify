@@ -32,7 +32,9 @@
 #
 FactoryBot.define do
   factory :user do
-    name { FFaker::Name.name }
+    first_name { FFaker::Name.first_name }
+    last_name { FFaker::Name.last_name }
+    name { "#{first_name} #{last_name}" }
     email { FFaker::Internet.email }
     password { 'abc12345abc' }
     password_confirmation { 'abc12345abc' }

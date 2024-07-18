@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Students::StudentProfileMetricsService do
+RSpec.describe Students::ProfileMetricsSurvey do
   let(:student_profile) { FactoryBot.create(:student_profile) }
   let(:service) { described_class.new(student_profile) }
 

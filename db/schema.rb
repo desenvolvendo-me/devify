@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_06_29_222148) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_17_012534) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -124,6 +124,13 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_29_222148) do
     t.string "complexity"
   end
 
+  create_table "project_simulations_student_profiles", id: false, force: :cascade do |t|
+    t.bigint "student_profile_id", null: false
+    t.bigint "project_simulation_id", null: false
+    t.index ["project_simulation_id"], name: "index_project_simulations_on_simulation_id"
+    t.index ["student_profile_id"], name: "index_student_profiles_on_profile_id"
+  end
+
   create_table "project_simulations_users", id: false, force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "project_simulation_id", null: false
@@ -145,15 +152,12 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_29_222148) do
     t.string "study_duration"
     t.text "web_framework_studied", default: [], array: true
     t.string "web_framework_study_duration"
-    t.text "most_studied_language_other_details", default: [], array: true
-    t.text "web_framework_studied_other_details", default: [], array: true
-    t.string "study_duration_details"
     t.integer "communication_preference"
     t.integer "exposure_preference"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "technology_other_details", default: [], array: true
-    t.integer "web_framework_study_duration_details", default: 0
+    t.integer "level_profile"
+    t.integer "level_profile_survey"
     t.index ["user_id"], name: "index_student_profiles_on_user_id"
   end
 
