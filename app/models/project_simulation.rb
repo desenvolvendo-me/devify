@@ -19,17 +19,17 @@ class ProjectSimulation < ApplicationRecord
   has_and_belongs_to_many :users
   has_and_belongs_to_many :student_profiles
 
-  DIFFICULTIES = {
-    easy: "Facil",
-    medium: "Medio",
-    hard: "Dificil"
-  }
+  DIFFICULTIES = [
+    :easy,
+    :medium,
+    :hard
+  ]
 
-  COMPLEXITIES = {
-    low: "Baixa",
-    medium: "Media",
-    high: "Alta"
-  }
+  COMPLEXITIES = [
+    :low,
+    :medium,
+    :high
+  ]
 
   enum difficulty: DIFFICULTIES, _suffix: true
   enum complexity: COMPLEXITIES, _suffix: true
