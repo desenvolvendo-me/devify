@@ -23,8 +23,8 @@
   </div>
 
   <div class="my-6">
-    <h4 class="font-normal text-primary-500 text-lg dark:text-primary-400"><%= t('views.manager.students.study_duration') %></h4>
-    <p class="block text-lg font-normal text-white"><%= t("views.manager.students.enums.duration.#{@student_profile.study_duration}") %></p>
+    <h4 class="font-normal text-primary-500 text-lg dark:text-primary-400"><%= I18n.t('views.manager.students.study_duration') %></h4>
+    <p class="block text-lg font-normal text-white"><%= @student_profile.translated_study_duration %></p>
   </div>
 
   <div class="my-6">
@@ -37,8 +37,8 @@
   </div>
 
   <div class="my-6">
-    <h4 class="font-normal text-primary-500 text-lg dark:text-primary-400"><%= t('views.manager.students.web_framework_study_duration') %></h4>
-    <p class="block text-lg font-normal text-white"><%= t("views.manager.students.enums.duration.#{@student_profile.web_framework_study_duration}") %></p>
+    <h4 class="font-normal text-primary-500 text-lg dark:text-primary-400"><%= I18n.t('views.manager.students.web_framework_study_duration') %></h4>
+    <p class="block text-lg font-normal text-white"><%= @student_profile.translated_web_framework_study_duration %></p>
   </div>
 
   <div class="my-6">
