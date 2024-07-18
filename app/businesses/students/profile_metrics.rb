@@ -1,16 +1,16 @@
 module Students
   class ProfileMetrics
     DIFFICULTY_POINTS = {
-      'easy' => 1,
-      'medium' => 2,
-      'hard' => 3
-    }
+      easy: 1,
+      medium: 2,
+      hard: 3
+    }.freeze
 
     COMPLEXITY_POINTS = {
-      'low' => 1,
-      'medium' => 2,
-      'high' => 3
-    }
+      low: 1,
+      medium: 2,
+      high: 3
+    }.freeze
 
     def initialize(student_profile)
       @student_profile = student_profile
