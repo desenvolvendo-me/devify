@@ -17,6 +17,15 @@ pt-BR:
         language: "Linguagem"
         framework: "Framework"
         selected_stack: "Stack Selecionado"
+        labels:
+          instagram: "Qual é o seu Instagram?"
+          technologies: "Quais tecnologias você já fez um curso?"
+          most_studied_language: "Qual linguagem de programação você mais estudou?"
+          study_duration: "Quanto tempo estudou sua linguagem?"
+          web_framework_studied: "Qual framework web da sua linguagem de programação você estudou?"
+          web_framework_study_duration: "Quanto tempo estudou o framework web?"
+          communication_preference: "Quanto você gosta de falar com as pessoas?"
+          exposure_preference: "Quanto você gosta de se expor?"
         enums:
           duration:
             never: "Nunca"
