@@ -2,7 +2,9 @@
 @import "tailwindcss/components";
 
 /* Custom components */
-@import "custom/custom.css";
+
+/* FIXME 'The `bg-primary-500` class does not exist. If `bg-primary-500` is a custom class, make sure it is defined within a `@layer` directive.'*/
+/*@import "custom/custom.css";*/
 
 @import "tailwindcss/utilities";
 @import "tippy.js/dist/tippy.css";
