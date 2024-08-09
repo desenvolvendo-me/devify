@@ -33,7 +33,7 @@ Rails.application.routes.draw do
   # Inherits from Railsui::PageController#index
   # To overide, add your own page#index view or change to a new root
   # Visit the start page for Rails UI any time at /railsui/start
-  root action: :index, controller: "railsui/page"
+  root "page#homepage"
 
   devise_for :users
   mount Sidekiq::Web => '/sidekiq'
