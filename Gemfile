@@ -33,8 +33,8 @@ gem 'stimulus-rails'
 gem 'stripe'
 gem 'tailwindcss-rails'
 gem 'turbo-rails'
-gem 'tzinfo-data',
-    platforms: %i[mingw mswin x64_mingw jruby]
+gem 'cssbundling-rails'  # Adicionando a gem cssbundling-rails
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'yaml'
 
 group :development, :test do

@@ -533,6 +533,7 @@ DEPENDENCIES
   capybara
   chartkick (~> 3.3.0)
   cpf_faker
+  cssbundling-rails
   database_cleaner
   devise
   factory_bot_rails
