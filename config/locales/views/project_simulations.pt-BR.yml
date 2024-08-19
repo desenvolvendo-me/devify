@@ -34,3 +34,12 @@ pt-BR:
       expected_results: "Resultados Esperados"
       difficulty: "Dificuldade"
       complexity: "Complexidade"
+
+  project_simulations:
+    new:
+      new_project_simulation: "Nova Simulação de Projeto"
+      to_go_back: "Voltar"
+    form:
+      save: "Salvar"
+    index:
+      start: "Começar"

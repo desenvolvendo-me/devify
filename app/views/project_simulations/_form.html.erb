@@ -1,0 +1,40 @@
+<%= form_with(model: @project_simulation, local: true) do |f| %>
+  <div class="mb-4">
+    <%= f.label :title, I18n.t('activerecord.attributes.project_simulation.title'), class: 'block text-lg font-bold text-gray-800 dark:text-gray-200' %>
+    <%= f.text_field :title, class: 'w-full mt-2 p-2 border rounded-lg dark:bg-slate-900 dark:text-gray-300' %>
+  </div>
+
+  <div class="mb-4">
+    <%= f.label :description, I18n.t('activerecord.attributes.project_simulation.description'), class: 'block text-lg font-bold text-gray-800 dark:text-gray-200' %>
+    <%= f.text_area :description, class: 'w-full mt-2 p-2 border rounded-lg dark:bg-slate-900 dark:text-gray-300' %>
+  </div>
+
+  <div class="mb-4">
+    <%= f.label :objectives, I18n.t('activerecord.attributes.project_simulation.objectives'), class: 'block text-lg font-bold text-gray-800 dark:text-gray-200' %>
+    <%= f.text_area :objectives, class: 'w-full mt-2 p-2 border rounded-lg dark:bg-slate-900 dark:text-gray-300' %>
+  </div>
+
+  <div class="mb-4">
+    <%= f.label :tools, I18n.t('activerecord.attributes.project_simulation.tools'), class: 'block text-lg font-bold text-gray-800 dark:text-gray-200' %>
+    <%= f.text_area :tools, class: 'w-full mt-2 p-2 border rounded-lg dark:bg-slate-900 dark:text-gray-300' %>
+  </div>
+
+  <div class="mb-4">
+    <%= f.label :expected_results, I18n.t('activerecord.attributes.project_simulation.expected_results'), class: 'block text-lg font-bold text-gray-800 dark:text-gray-200' %>
+    <%= f.text_area :expected_results, class: 'w-full mt-2 p-2 border rounded-lg dark:bg-slate-900 dark:text-gray-300' %>
+  </div>
+
+  <div class="mb-4">
+    <%= f.label :difficulty, I18n.t('activerecord.attributes.project_simulation.difficulty'), class: 'block text-lg font-bold text-gray-800 dark:text-gray-200' %>
+    <%= f.select :difficulty, ProjectSimulation::DIFFICULTIES, { prompt: "Selecione" }, class: 'w-full mt-2 p-2 border rounded-lg dark:bg-slate-900 dark:text-gray-300' %>
+  </div>
+
+  <div class="mb-4">
+    <%= f.label :complexity, I18n.t('activerecord.attributes.project_simulation.complexity'), class: 'block text-lg font-bold text-gray-800 dark:text-gray-200' %>
+    <%= f.select :complexity, ProjectSimulation::COMPLEXITIES, { prompt: "Selecione" }, class: 'w-full mt-2 p-2 border rounded-lg dark:bg-slate-900 dark:text-gray-300' %>
+  </div>
+
+  <div class="mt-6">
+    <%= f.submit t('.save'), class: 'btn btn-primary' %>
+  </div>
+<% end %>
