@@ -24,6 +24,11 @@ module Students
         puts "No content unlocked!"
       end
     end
-    
+
+    # Método para desbloquear o conteúdo do nível 1
+    def unlock_level1_content
+      puts "content for level 1 unlocked"
+    end
+
   end
 end
