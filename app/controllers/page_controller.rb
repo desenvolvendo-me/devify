@@ -1,4 +1,3 @@
-require_relative '././../businesses/gateways/stripe_gateway'
 class PageController < ApplicationController
   before_action :set_stripe_gateway
   before_action :set_recent_invoices, only: [:billing]

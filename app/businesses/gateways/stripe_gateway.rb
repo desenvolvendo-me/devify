@@ -64,9 +64,9 @@ class StripeGateway
 
   def get_plan_price_id(plan_type)
     case plan_type
-    when 'professional_montlhy'
+    when 'professional_monthly'
       'price_1PCWsiRpXIS2OKDBowrOw4CT'
-    when 'premium_montlhy'
+    when 'premium_monthly'
       'price_1PCWuFRpXIS2OKDBlzlZvmWh'
     when 'professional_yearly'
       'price_1PCWwORpXIS2OKDB2Z7wcmWe'

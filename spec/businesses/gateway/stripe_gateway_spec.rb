@@ -1,5 +1,4 @@
 require 'rails_helper'
-require_relative '../../../app/businesses/gateways/stripe_gateway'
 
 RSpec.describe StripeGateway do
   let(:gateway) { StripeGateway.new }
@@ -16,7 +15,8 @@ RSpec.describe StripeGateway do
 
   describe '#initialize' do
     it 'sets the Stripe API key' do
-      expect(Stripe).to receive(:api_key=).with(Stripe.api_key = Rails.application.credentials.dig(:stripe, :secret_key))
+      expect(Stripe).to receive(:api_key=).with(Stripe.api_key = Rails.application.credentials.dig(
+:stripe, :secret_key))
       StripeGateway.new
     end
   end
@@ -25,7 +25,8 @@ RSpec.describe StripeGateway do
     context 'when successful' do
       it 'returns the list of invoices' do
         invoice_data = [double]
-        allow(Stripe::Invoice).to receive_message_chain(:list, :data).and_return(invoice_data)
+        allow(Stripe::Invoice).to receive_message_chain(:list, 
+:data).and_return(invoice_data)
         expect(gateway.retrieve_recent_invoices).to eq(invoice_data)
       end
     end
@@ -58,7 +59,9 @@ RSpec.describe StripeGateway do
   end
 
   describe '#retrieve_plan_details' do
-    let(:subscription) { double(items: double(data: [double(plan: double(product: 'prod_123', name: 'Plan', interval: 'monthly', amount: 1000))])) }
+    let(:subscription) {
+ double(items: double(data: [double(plan: double(product: 'prod_123', 
+name: 'Plan', interval: 'monthly', amount: 1000))])) }
     let(:product) { double(name: 'Plan') }
 
     context 'when successful' do
@@ -73,7 +76,8 @@ RSpec.describe StripeGateway do
       let(:subscription) { double(items: double(data: [])) }
       it 'returns default plan details' do
         result = gateway.retrieve_plan_details(subscription)
-        expect(result).to eq({name: "Desconhecido", interval: "Desconhecido", amount: "Indisponível"})
+        expect(result).to eq({name: "Desconhecido", interval: "Desconhecido", 
+amount: "Indisponível"})
       end
     end
 
@@ -82,7 +86,8 @@ RSpec.describe StripeGateway do
         allow(Stripe::Product).to receive(:retrieve).and_raise(stripe_error)
         expect(Rails.logger).to receive(:error).with("Stripe Error: Stripe error")
         result = gateway.retrieve_plan_details(subscription)
-        expect(result).to eq({name: "Erro ao recuperar o plano", interval: "Desconhecido", amount: "Indisponível"})
+        expect(result).to eq({name: "Erro ao recuperar o plano", 
+interval: "Desconhecido", amount: "Indisponível"})
       end
     end
   end

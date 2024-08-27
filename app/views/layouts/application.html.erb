@@ -24,6 +24,7 @@
       <%= render "shared/nav" %>
     <% end %>
     <%= yield %>
+    <%= javascript_include_tag 'student_profile_validation' %>
     <%= railsui_launcher if Rails.env.development? %>
   </body>
 </html>

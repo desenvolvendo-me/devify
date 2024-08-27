@@ -1,34 +1,55 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= Railsui.config.application_name || "Rails UI " %></title>
+  <title><%= Railsui.config.application_name || "Rails UI" %></title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
 
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
 
-  <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+  <!-- Importmap -->
+  <%= javascript_importmap_tags %>
 
-  <%= stylesheet_link_tag "application", "https://unpkg.com/trix@2.0.0/dist/trix.css", "data-turbo-track": "reload" %>
+  <!-- Chartkick and Chart.bundle -->
+  <%= javascript_include_tag "Chart.bundle", crossorigin: 'anonymous', defer: true %>
+  <%= javascript_include_tag "chartkick", crossorigin: 'anonymous', defer: true %>
+
+  <!-- Application Stylesheet -->
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= stylesheet_link_tag "https://unpkg.com/trix@2.0.0/dist/trix.css", "data-turbo-track": "reload" %>
+
+  <!-- Flowbite -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.turbo.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
 
+  <!-- Custom Fonts and Meta -->
   <%= render "shared/fonts" %>
   <%= render "shared/meta" %>
+
+  <!-- Custom Colors -->
   <%= custom_colors_css %>
+
+  <!-- Additional Head Content -->
   <%= yield :head %>
 </head>
 
 <body class="font-normal leading-normal text-slate-800 relative selection:bg-primary-500/40 bg-white dark:bg-slate-900 dark:text-slate-100 antialiased">
-<%= turbo_include_tags %>
+<!-- Flash Messages -->
 <%= render "shared/flash" %>
+
+<!-- Header or Navigation -->
 <% if content_for(:header).present? %>
   <%= yield :header %>
 <% else %>
   <%= render "shared/nav" %>
 <% end %>
+
+<!-- Main Content -->
 <%= yield %>
+
+<!-- Rails UI Launcher (Development Only) -->
 <%= railsui_launcher if Rails.env.development? %>
 </body>
 </html>

@@ -11,7 +11,6 @@ module Devify
     config.generators do |g|
       g.template_engine :railsui
       g.fallbacks[:railsui] = :erb
-
     end
 
     config.to_prepare do
@@ -30,16 +29,21 @@ module Devify
     config.i18n.default_locale = 'pt-BR'
     config.i18n.locale = 'pt-BR'
 
-
+    # Add custom autoload paths
     config.autoload_paths += %W(#{config.root}/lib)
-    config.autoload_paths += %W(#{config.root}/app/gateways)
+    config.autoload_paths += %W(#{config.root}/app/businesses/gateways)
+
+    # Eager load paths if needed
+    config.eager_load_paths += %W(#{config.root}/app/businesses/gateways)
 
     # Configuration for the application, engines, and railties goes here.
-    #
-    # These settings can be overridden in specific environments using the files
-    # in config/environments, which are processed later.
-    #
-    # config.time_zone = "Central Time (US & Canada)"
-    # config.eager_load_paths << Rails.root.join("extras")
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        resource '*',
+                 headers: :any,
+                 methods: [:get, :post, :put, :patch, :delete, :options, :head]
+      end
+    end
   end
 end
