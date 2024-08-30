@@ -9,7 +9,7 @@ module Students
       # por exemplo, com base em campos como `main_language`, `track`, etc.
       # retorne um número que represente o nível do perfil
       # substitua a lógica abaixo com a lógica real de cálculo
-      1
+        @student_profile.level || 1  # Retorna o nível atual ou 1 como padrão
     end
 
     def unlock_content_based_on_level
