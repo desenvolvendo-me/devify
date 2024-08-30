@@ -7,6 +7,7 @@
 #  exposure_preference                  :integer
 #  github                               :text
 #  instagram                            :text
+#  level                                :integer
 #  linkedin                             :text
 #  main_framework                       :string
 #  main_language                        :string
