@@ -18,6 +18,8 @@ module Manager
         #profile_metrics_service = ::Students::ProfileMetricsService.new(@student_profile)
         #@profile_level = profile_metrics_service.calculate_profile_level
         @profile_level = @student_profile.level
+        # Desbloqueio de conteúdo
+        @content = Content.where('level <= ?', @profile_level)
       end
 
       def edit
