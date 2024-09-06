@@ -20,6 +20,9 @@ module Manager
         @profile_level = @student_profile.level
         # Desbloqueio de conteúdo
         @content = Content.where('level <= ?', @profile_level)
+        # Todo o conteúdo (bloqueado e desbloqueado)
+        @all_content = Content.all
+
       end
 
       def edit
