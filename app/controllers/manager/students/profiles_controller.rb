@@ -15,8 +15,9 @@ module Manager
         @exposure = metrics_service.exposure
         @survey_level = metrics_service.calculate_survey_level
 
-        profile_metrics_service = ::Students::ProfileMetricsService.new(@student_profile)
-        @profile_level = profile_metrics_service.calculate_profile_level
+        #profile_metrics_service = ::Students::ProfileMetricsService.new(@student_profile)
+        #@profile_level = profile_metrics_service.calculate_profile_level
+        @profile_level = @student_profile.level
       end
 
       def edit
