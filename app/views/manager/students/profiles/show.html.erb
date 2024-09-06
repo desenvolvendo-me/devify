@@ -20,6 +20,22 @@
       <div class="flex justify-between items-center mb-4">
         <%= link_to "Edit", edit_manager_students_profile_path, class: "btn btn-sm btn-link" %>
         <span class="rounded bg-green-100 text-green-800 font-medium px-2 py-1 text-xs <%= level_color_class(@profile_level) %>">Level <%= @profile_level %></span>
+        <h2>Unlocked and Locked Content</h2>
+        <ul>
+          <% @all_content.each do |content| %>
+            <li>
+              <% if content.level <= @profile_level %>
+                <!-- Conteúdo desbloqueado -->
+                <h3><%= content.title %></h3>
+                <p><%= content.description %></p>
+              <% else %>
+                <!-- Conteúdo bloqueado -->
+                <h3><%= content.title %> (Blocked)</h3>
+                <p>This content is locked. Reach Level <%= content.level %> to unlock it.</p>
+             <% end %>
+           </li>
+         <% end %>
+        </ul>
       </div>
 
       <div class="flex flex-col items-center justify-center mb-6">
