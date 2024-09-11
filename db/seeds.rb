@@ -104,7 +104,7 @@ if Rails.env.development?
         objectives: 'Entender como construir APIs com Node.js, lidar com requisições HTTP, e realizar operações de CRUD.',
         tools: 'Node.js, Express, MongoDB, Postman',
         expected_results: 'Uma API RESTful funcional com endpoints para CRUD de recursos e documentação no Postman.',
-        difficulty: 'Alta',
+        difficulty: 'Difícil',
         complexity: 'Média'
       },
       {
@@ -113,7 +113,7 @@ if Rails.env.development?
         objectives: 'Aprender os fundamentos de machine learning, pré-processamento de dados, e avaliação de modelos.',
         tools: 'Python, scikit-learn, pandas, Jupyter Notebook',
         expected_results: 'Um notebook Jupyter contendo todo o processo de análise de dados, treinamento do modelo e avaliação.',
-        difficulty: 'Alta',
+        difficulty: 'Difícil',
         complexity: 'Alta'
       }
     ]
