@@ -83,7 +83,7 @@ class PageController < ApplicationController
   private
 
   def set_stripe_gateway
-    @stripe_gateway = StripeGateway.new
+    @stripe_gateway = Gateways::Principal.new
   end
 
   def set_recent_invoices

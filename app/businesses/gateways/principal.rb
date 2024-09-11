@@ -1,4 +1,5 @@
- class StripeGateway
+module Gateways
+  class Principal
     def initialize
       Stripe.api_key = Rails.application.credentials.dig(:stripe, :secret_key)
     end
@@ -23,7 +24,7 @@
         product = Stripe::Product.retrieve(plan.product)
         plan_name = product.name
         plan_interval = plan.interval
-        plan_amount = plan.amount / 100.0  # Converte de centavos para unidades monetárias
+        plan_amount = plan.amount / 100.0 # Converte de centavos para unidades monetárias
         { name: plan_name, interval: plan_interval, amount: plan_amount }
       else
         { name: "Desconhecido", interval: "Desconhecido", amount: "Indisponível" }
@@ -41,7 +42,7 @@
                        price: plan_id,
                        quantity: 1,
                      }],
-        mode: 'subscription',  # ou 'payment', dependendo do seu caso
+        mode: 'subscription', # ou 'payment', dependendo do seu caso
         success_url: success_url + "?session_id={CHECKOUT_SESSION_ID}",
         cancel_url: cancel_url,
         metadata: {
@@ -77,3 +78,4 @@
       end
     end
   end
+end
