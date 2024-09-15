@@ -1,0 +1,13 @@
+<div class="user-profile">
+  <% if current_user.avatar.attached? %>
+    <%= image_tag current_user.avatar, class: 'user-avatar' %>
+  <% end %>
+  <p><strong>Name:</strong> <%= current_user.full_name %></p>
+  <p><strong>Email:</strong> <%= current_user.email %></p>
+  <% if current_user.respond_to?(:level) %>
+    <p><strong>Level:</strong> <%= current_user.level %></p>
+  <% end %>
+  <% if current_user.respond_to?(:points) %>
+    <p><strong>Points:</strong> <%= current_user.points %></p>
+  <% end %>
+</div>
