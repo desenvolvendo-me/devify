@@ -1,13 +1,14 @@
 <div class="user-profile">
-  <% if current_user.avatar.attached? %>
-    <%= image_tag current_user.avatar, class: 'user-avatar' %>
-  <% end %>
-  <p><strong>Name:</strong> <%= current_user.full_name %></p>
-  <p><strong>Email:</strong> <%= current_user.email %></p>
-  <% if current_user.respond_to?(:level) %>
-    <p><strong>Level:</strong> <%= current_user.level %></p>
-  <% end %>
-  <% if current_user.respond_to?(:points) %>
-    <p><strong>Points:</strong> <%= current_user.points %></p>
-  <% end %>
+  <img src="<%= current_user.avatar.present? ? url_for(current_user.avatar) : 'default-avatar.png' %>" alt="User Avatar" class="avatar">
+  <div>
+    <div class="name"><%= current_user.full_name %></div>
+    <div class="email"><%= current_user.email %></div>
+    <% if current_user.student_profile.present? %>
+      <div class="level">Level: <%= current_user.student_profile.level %></div>
+      <div class="points">Points: <%= current_user.student_profile.points %></div>
+    <% else %>
+      <div class="level">Level: Not Available</div>
+      <div class="points">Points: Not Available</div>
+    <% end %>
+  </div>
 </div>
