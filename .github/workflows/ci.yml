@@ -1,4 +1,4 @@
-name: CI Pipeline
+name: CI Workflow
 
 on:
   push:
@@ -13,40 +13,36 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+    - uses: actions/checkout@v3
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '2.7.5'
+    
+    - name: Install Bundler
+      run: gem install bundler -v 2.4.22 
 
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 2.7.5  # Use the Ruby version of your project
-
-      - name: Install dependencies
-        run: |
-          gem install bundler
-          bundle install
-
-      - name: Run Tests
-        run: |
-          bundle exec rspec  # Substitua com o comando de teste que você usa, como `rake test` ou `minitest`
+    - name: Install dependencies
+      run: bundle install
+    
+    - name: Run tests
+      run: bundle exec rspec
 
   lint:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+    - uses: actions/checkout@v3
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '2.7.5'
 
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 2.7.5
+    - name: Install Bundler
+      run: gem install bundler -v 2.4.22  
 
-      - name: Install dependencies
-        run: |
-          gem install bundler
-          bundle install
+    - name: Install dependencies
+      run: bundle install
 
-      - name: Run RuboCop Linter
-        run: |
-          bundle exec rubocop
+    - name: Run RuboCop
+      run: bundle exec rubocop
