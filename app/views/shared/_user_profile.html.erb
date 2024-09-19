@@ -2,8 +2,8 @@
   <p><strong>Name:</strong> <%= current_user.full_name %></p>
   <p><strong>Email:</strong> <%= current_user.email %></p>
   <% if current_user.respond_to?(:level_profile) %>
-    <p><strong>Level:</strong> <%= current_user.level_profile %></p>
-  <% else %>
+    <p><strong>Level:</strong> <%= @level_profile %></p>
+<% else %>
     <p><strong>Level:</strong> Not Available</p>
   <% end %>
   <% if current_user.respond_to?(:points) %>
