@@ -1,13 +1,15 @@
 <div class="user-profile">
-  <p><strong>Name:</strong> <%= current_user.full_name %></p>
-  <p><strong>Email:</strong> <%= current_user.email %></p>
-  <p><strong>Level:</strong> <%= @profile_level.present? ? @profile_level : "Not Available" %></p>
-  <% if current_user.respond_to?(:points) %>
-    <p><strong>Points:</strong> <%= current_user.points %></p>
+  <% if @user_profile.present? %>
+    <p><strong>Name:</strong> <%= @user_profile.full_name %></p>
+    <p><strong>Email:</strong> <%= @user_profile.email %></p>
+    <p><strong>Level:</strong> <%= @level_profile || "Not Available" %></p>
+    <!-- A linha abaixo está comentada, pois os pontos serão implementados em outra tarefa -->
+    <!-- <p><strong>Points:</strong> <%= @points || "Not Available" %></p> -->
   <% else %>
-    <p><strong>Points:</strong> Not Available</p>
+    <p>User not signed in.</p>
   <% end %>
 </div>
+
 
 
 
