@@ -14,12 +14,12 @@
 #  updated_at       :datetime         not null
 #
 class ProjectSimulation < ApplicationRecord
-enum difficulty: { Fácil: 'easy', Média: 'medium', Difícil: 'hard' }
+enum difficulty: { Easy: 'easy', Medium: 'medium', Hard: 'hard' }
 
   has_and_belongs_to_many :users
 
-  DIFFICULTIES = %w[Fácil Média Difícil].freeze
-  COMPLEXITIES = %w[Baixa Média Alta].freeze
+  DIFFICULTIES = %w[Easy Medium Hard].freeze
+  COMPLEXITIES = %w[Low Medium High].freeze
 
   validates :difficulty, presence: true, inclusion: { in: DIFFICULTIES }
   validates :complexity, presence: true, inclusion: { in: COMPLEXITIES }
