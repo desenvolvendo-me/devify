@@ -7,6 +7,9 @@
 ![Ruby](https://img.shields.io/badge/Ruby-2.7.5-red)
 ![Rails](https://img.shields.io/badge/Rails-7.0.4-blue)
 
+## Referência
+referência para onde encontrar a documentação do projeto : https://drive.google.com/drive/folders/116MFyqtZoh-lnrJCg3W9K95AeK3SoZW2
+
 ## Objetivo
 
 Criar uma arquitetura de referência para facilitar a criação de microSaaS junto com os alunos, proporcionando uma experiência tão fácil quanto [Bubble.io](https://bubble.io/), mas mais próxima dos projetos [JumpstartRails](https://jumpstartrails.com/), [AvoHQ](https://avohq.io/) e [ShipFast](https://shipfa.st/). O foco é facilitar a vida do programador na criação de novas ideias, já que nossos alunos querem ser programadores e não empresários.
