@@ -14,6 +14,8 @@
 #  updated_at       :datetime         not null
 #
 class ProjectSimulation < ApplicationRecord
+enum difficulty: { Fácil: 'easy', Média: 'medium', Difícil: 'hard' }
+
   has_and_belongs_to_many :users
 
   DIFFICULTIES = %w[Fácil Média Difícil].freeze
