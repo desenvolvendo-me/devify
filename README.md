@@ -8,7 +8,7 @@
 ![Rails](https://img.shields.io/badge/Rails-7.0.4-blue)
 
 ## Referência
-referência para onde encontrar a documentação do projeto : https://drive.google.com/drive/folders/116MFyqtZoh-lnrJCg3W9K95AeK3SoZW2
+Referência para onde encontrar a documentação do projeto : https://drive.google.com/drive/folders/116MFyqtZoh-lnrJCg3W9K95AeK3SoZW2
 
 ## Objetivo
 
