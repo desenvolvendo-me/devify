@@ -2,28 +2,3 @@
 @import "buttons.css";
 @import "forms.css";
 @import "navigation.css";
-
-.user-profile {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 10px;
-    background-color: #f9f9f9;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.user-profile img.avatar {
-    border-radius: 50%;
-    width: 100px;
-    height: 100px;
-}
-
-.user-profile .name {
-    font-size: 1.2em;
-    font-weight: bold;
-}
-
-.user-profile .email {
-    color: #555;
-}
