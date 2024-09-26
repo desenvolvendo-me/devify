@@ -1,7 +1,13 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
-  resources :project_simulations, only: [:index, :show, :create]
+  # config/routes.rb
+  resources :project_simulations, only: [:index, :show, :create, :new] do
+    collection do
+      post 'start'
+    end
+  end
+
   resources :posts
 
   get 'admin/integrations', to: 'page#integrations'

@@ -2,6 +2,7 @@
   <div class="max-w-5xl mx-auto px-4 my-16">
     <div class="flex items-center justify-between pb-6 border-b dark:border-slate-700">
       <h1 class="text-4xl font-extrabold text-slate-900 dark:text-slate-100 tracking-tight"><%= t('.available_projects') %></h1>
+      <%= link_to t('.add_project'), new_project_simulation_path, class: 'btn btn-primary' %>
     </div>
 
     <div class="row">
@@ -14,7 +15,7 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <%= link_to t('.details'), project_simulation_path(project), class: 'btn btn-link' %>
-                  <%= form_with url: project_simulations_path, method: :post, local: true do |form| %>
+                  <%= form_with url: start_project_simulations_path, method: :post, local: true do |form| %>
                     <%= form.hidden_field :project_id, value: project.id %>
                     <%= form.submit t('.start'), class: 'btn btn-primary' %>
                   <% end %>
