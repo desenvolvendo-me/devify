@@ -9,9 +9,9 @@ class ProjectSimulationsController < ApplicationController
 
    @project_simulations = case @profile_level
        when 1
-         ProjectSimulation.Easy
+         ProjectSimulation.easy
        when 2
-         ProjectSimulation.Medium.or(ProjectSimulation.Easy) 
+         ProjectSimulation.medium.or(ProjectSimulation.easy) 
        when 3
          ProjectSimulation.all 
        else
