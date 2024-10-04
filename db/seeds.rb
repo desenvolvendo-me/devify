@@ -95,8 +95,8 @@ if Rails.env.development?
         objectives: 'Aprender conceitos fundamentais do Rails, MVC, ActiveRecord, e boas práticas de desenvolvimento.',
         tools: 'Ruby, Rails, PostgreSQL, Bootstrap',
         expected_results: 'Uma aplicação web funcional com autenticação, autorização, e CRUDs básicos.',
-        difficulty: 'Média',
-        complexity: 'Alta'
+        difficulty: 'medium',
+        complexity: 'high'
       },
       {
         title: 'API RESTful com Node.js e Express',
@@ -104,8 +104,8 @@ if Rails.env.development?
         objectives: 'Entender como construir APIs com Node.js, lidar com requisições HTTP, e realizar operações de CRUD.',
         tools: 'Node.js, Express, MongoDB, Postman',
         expected_results: 'Uma API RESTful funcional com endpoints para CRUD de recursos e documentação no Postman.',
-        difficulty: 'Alta',
-        complexity: 'Média'
+        difficulty: 'hard',
+        complexity: 'medium'
       },
       {
         title: 'Aplicação de Machine Learning com Python',
@@ -113,8 +113,8 @@ if Rails.env.development?
         objectives: 'Aprender os fundamentos de machine learning, pré-processamento de dados, e avaliação de modelos.',
         tools: 'Python, scikit-learn, pandas, Jupyter Notebook',
         expected_results: 'Um notebook Jupyter contendo todo o processo de análise de dados, treinamento do modelo e avaliação.',
-        difficulty: 'Alta',
-        complexity: 'Alta'
+        difficulty: 'hard',
+        complexity: 'high'
       }
     ]
   )
