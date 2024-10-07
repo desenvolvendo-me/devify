@@ -7,9 +7,25 @@
 ![Ruby](https://img.shields.io/badge/Ruby-2.7.5-red)
 ![Rails](https://img.shields.io/badge/Rails-7.0.4-blue)
 
+## Referência
+Referência para onde encontrar a documentação do projeto : https://drive.google.com/drive/folders/116MFyqtZoh-lnrJCg3W9K95AeK3SoZW2
+
 ## Objetivo
 
 Criar uma arquitetura de referência para facilitar a criação de microSaaS junto com os alunos, proporcionando uma experiência tão fácil quanto [Bubble.io](https://bubble.io/), mas mais próxima dos projetos [JumpstartRails](https://jumpstartrails.com/), [AvoHQ](https://avohq.io/) e [ShipFast](https://shipfa.st/). O foco é facilitar a vida do programador na criação de novas ideias, já que nossos alunos querem ser programadores e não empresários.
+
+# O que faz o projeto?
+Medir a evolução do programador (aluno).
+Verificar o lastro (pelo wakatime e pelo github) do aluno, se está ascendente ou descendente.
+
+## Porque o projeto é útil?
+Constatando que o lastro do aluno está decaindo, membros da equipe (SPD) irá entrar em contato com esse aluno para entender o que ele está passando, com a finalidade para que o lastro dele volta a ser ascendente.
+
+## Como os usuários podem começar a usar o projeto?
+Primeiro passo - Cadastrar o usuário.
+Segundo passo - Cadastrar o propósito desse usuário.
+Terceiro passo - Cadastrar a Rotina.
+Quarto passo - Cadastrar os pensamentos (positivos ou negativos).
 
 ## API
 
