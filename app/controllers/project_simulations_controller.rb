@@ -2,7 +2,21 @@ class ProjectSimulationsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @project_simulations = ProjectSimulation.all
+   student_profile = current_user.student_profile
+
+   profile_metrics_service = ::Students::ProfileMetricsService.new(@student_profile)
+   @profile_level = profile_metrics_service.calculate_profile_level
+
+   @project_simulations = case @profile_level
+       when 1
+         ProjectSimulation.easy
+       when 2
+         ProjectSimulation.medium.or(ProjectSimulation.easy) 
+       when 3
+         ProjectSimulation.all 
+       else
+         ProjectSimulation.none 
+       end
   end
 
   def show
