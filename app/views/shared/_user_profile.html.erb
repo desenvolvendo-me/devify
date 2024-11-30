@@ -1,0 +1,15 @@
+<div class="user-profile">
+  <% if @user_profile.present? %>
+    <p><strong>Name:</strong> <%= @user_profile.full_name %></p>
+    <p><strong>Email:</strong> <%= @user_profile.email %></p>
+    <p><strong>Level:</strong> <%= @level_profile || "Not Available" %></p>
+    <!-- A linha abaixo está comentada, pois os pontos serão implementados em outra tarefa -->
+    <!-- <p><strong>Points:</strong> <%= @points || "Not Available" %></p> -->
+  <% else %>
+    <p>User not signed in.</p>
+  <% end %>
+</div>
+
+
+
+
